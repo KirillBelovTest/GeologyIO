@@ -1,0 +1,5 @@
+# ignoring files for the wolfram language projects
+
+/build
+/docbuild.xml
+/Notebok.nb
