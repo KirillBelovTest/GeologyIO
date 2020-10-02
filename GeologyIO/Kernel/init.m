@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
 
-(* Wolfram Language Init File *)
+(* Package init file *)
 
 
-Get[ "GeologyIO`GeologyIO`"]
+Get["GeologyIO`GeologyIO`"]

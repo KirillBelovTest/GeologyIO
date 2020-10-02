@@ -1,5 +1,6 @@
-# ignoring files for the wolfram language projects
+# ignoring files for the Wolfram Language projects
 
+/.idea
 /build
 /docbuild.xml
 /Notebok.nb
