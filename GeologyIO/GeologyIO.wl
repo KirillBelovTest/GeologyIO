@@ -1119,7 +1119,7 @@ SEGYWrite[file_String?FileExistsQ,
 		];
 		
 		If[
-			fileSize - 3600 > (240 + numberOfSamplesForReel * SEGYNumberSize[samplesFormatCode]) * (numberDataTraces - Length[traces]), 
+			numberDataTraces > 1 && fileSize - 3600 > (240 + numberOfSamplesForReel * SEGYNumberSize[samplesFormatCode]) * (numberDataTraces - Length[traces]), 
 			Message[SEGYWrite::wrterr, "out of trace limit for the file"]; Return[Null]
 		];
 	
