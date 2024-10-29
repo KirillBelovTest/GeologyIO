@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
 BeginPackage["KirillBelov`GeologyIO`", {
-	"KirillBelov`GeologyIO`Numbers`"
+    "KirillBelov`GeologyIO`SEGY`"
 }]; 
 
 

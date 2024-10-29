@@ -336,7 +336,7 @@ Module[{
 (*TraceHeader specification*)
 
 
-$SEGYTraceHeaderSpecification = <|
+$traceHeaderSpec = <|
 	"tracl" -> {1,4,1}, "tracr"->{5,8,1}, "fldr"->{9,12,1}, "tracf"->{13,16,1}, "ep"->{17,20,1}, 
 	"cdp" -> {21,24,1}, "cdpt"->{25,28,1}, "trid"->{29,30,-1}, "nvs"->{31,32,1}, "nhs"->{33,34,1}, 
 	"duse" -> {35,36,1}, "offset"->{37,40,-1}, "gelev"->{41,44,-1}, "selev"->{45,48,-1}, "sdepth"->{49,52,-1}, 

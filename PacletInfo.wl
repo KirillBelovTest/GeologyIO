@@ -19,6 +19,8 @@ PacletObject[
         "Root" -> "Kernel",
         "Context" -> {
           {"KirillBelov`GeologyIO`", "GeologyIO.wl"}, 
+          {"KirillBelov`GeologyIO`SEGY`", "SEGY.wl"}, 
+          {"KirillBelov`GeologyIO`EBCDIC`", "EBCDIC.wl"}, 
           {"KirillBelov`GeologyIO`Numbers`", "Numbers.wl"}
         },
         "Symbols" -> {
