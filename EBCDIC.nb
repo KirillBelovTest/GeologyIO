@@ -1,0 +1,73 @@
+(* Content-type: application/vnd.wolfram.cdf.text *)
+
+(*** Wolfram CDF File ***)
+(* http://www.wolfram.com/cdf *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*************************************************************************)
+(*                                                                       *)
+(*                                                                       *)
+(*  This file was created under the Wolfram Enterprise licensing terms.  *)
+(*                                                                       *)
+(*       For additional information concerning CDF licensing see:        *)
+(*                                                                       *)
+(*        www.wolfram.com/cdf/adopting-cdf/licensing-options.html        *)
+(*                                                                       *)
+(*                                                                       *)
+(*                                                                       *)
+(*************************************************************************)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[      1060,         20]
+NotebookDataLength[      1717,         52]
+NotebookOptionsPosition[      2079,         49]
+NotebookOutlinePosition[      2485,         65]
+CellTagsIndexPosition[      2442,         62]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], " "}]], "Input",
+ CellChangeTimes->{{3.939078985024248*^9, 3.9390789933634434`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"b1ab91f5-4d17-6241-a17f-c29b05c612fd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<GeologyIO`\>\"", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.9390789958146152`*^9, 3.9390790041908836`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"c70febcd-1b40-5d4a-a082-203991925e13"],
+
+Cell[BoxData[""], "Input",ExpressionUUID->"b5ad5f2e-f647-5041-988b-1e7b1e683860"]
+},
+WindowSize->{569.25, 624.75},
+WindowMargins->{{669, Automatic}, {177, Automatic}},
+FrontEndVersion->"14.1 for Microsoft Windows (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f7414274-82f4-1e45-8390-de0d108253fd"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[1460, 33, 289, 6, 28, "Input",ExpressionUUID->"b1ab91f5-4d17-6241-a17f-c29b05c612fd"],
+Cell[1752, 41, 239, 4, 28, "Input",ExpressionUUID->"c70febcd-1b40-5d4a-a082-203991925e13"],
+Cell[1994, 47, 81, 0, 28, "Input",ExpressionUUID->"b5ad5f2e-f647-5041-988b-1e7b1e683860"]
+}
+]
+*)
+
