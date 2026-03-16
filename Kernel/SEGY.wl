@@ -1,12 +1,8 @@
 (* :Package: *)
 
-BeginPackage["KirillBelov`GeologyIO`SEGY`", {
-    "KirillBelov`GeologyIO`EBCDIC`",
-    "KirillBelov`GeologyIO`Numbers`"
+BeginPackage["WLJS`GeologyIO`SEGY`", {
+    "WLJS`GeologyIO`Numbers`"
 }];
-
-
-(*Names*)
 
 
 SEGYImport::usage =
@@ -18,7 +14,19 @@ SEGYExport::usage =
 
 
 SEGYData::usage =
-"SEGYData[data] seg-y files representation.";
+"SEGYData[data] seg-y in-memory representation.";
+
+
+SEGYOpen::usage =
+"SEGYOpen[data] open seg-y file for the editing.";
+
+
+SEGYClose::usage =
+"SEGYClose[data] close editable seg-y file.";
+
+
+SEGYFile::usage =
+"SEGYFile[data] editable seg-y file representation.";
 
 
 Begin["`Private`"];

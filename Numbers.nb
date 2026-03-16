@@ -23,10 +23,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[      1060,         20]
-NotebookDataLength[      4390,        132]
-NotebookOptionsPosition[      4087,        116]
-NotebookOutlinePosition[      4506,        133]
-CellTagsIndexPosition[      4463,        130]
+NotebookDataLength[      8201,        215]
+NotebookOptionsPosition[      7748,        196]
+NotebookOutlinePosition[      8185,        213]
+CellTagsIndexPosition[      8142,        210]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -50,8 +50,10 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-       RowBox[{"-", "10"}], ",", " ", "10"}], "}"}], ",", " ", 
-     RowBox[{"2", "^", "20"}]}], "]"}]}], ";"}]], "Code",
+       RowBox[{"-", 
+        RowBox[{"2", "^", "20"}]}], ",", " ", 
+       RowBox[{"2", "^", "20"}]}], "}"}], ",", " ", 
+     RowBox[{"2", "^", "25"}]}], "]"}]}], ";"}]], "Code",
  CellLabel->"In[5]:=",ExpressionUUID->"132be2fa-b490-47d0-8c3b-0a188e0796af"],
 
 Cell[CellGroupData[{
@@ -66,33 +68,111 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.02828365625`", ",", "Null"}], "}"}]], "Output",
- CellLabel->"Out[6]=",ExpressionUUID->"f6f7892b-fc3d-41de-8cbc-8188927fb680"]
+  RowBox[{"0.87267965`", ",", "Null"}], "}"}]], "Output",
+ CellLabel->"Out[6]=",ExpressionUUID->"1c2e1895-d9b6-444a-87cf-de034cbc5881"]
 }, Open  ]],
 
-Cell[BoxData[
- RowBox[{"RepeatedTiming", "[", 
-  RowBox[{
-   RowBox[{"IBM32ByteArrayToReal", "[", "bytes", "]"}], ";"}], "]"}]], "Code",\
+Cell[CellGroupData[{
 
- CellLabel->"In[7]:=",ExpressionUUID->"5be24f8e-7689-4675-9dd9-6f1e10fdafac"],
+Cell[BoxData["bytes"], "Code",
+ CellLabel->"In[11]:=",ExpressionUUID->"f6e7dd0a-babb-5644-852d-a3e91f78e1ab"],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{
+    RowBox[{
+      StyleBox[
+       TagBox["ByteArray", "SummaryHead"], "NonInterpretableSummary"], 
+      StyleBox["[", "NonInterpretableSummary"], 
+      DynamicModuleBox[{
+       Typeset`open$$ = False, Typeset`embedState$$ = "Ready"}, 
+       TemplateBox[{
+         TemplateBox[{
+           PaneSelectorBox[{False -> GridBox[{{
+                 GridBox[{{
+                    TagBox["\"134.2 MB\"", "SummaryItem"]}}, 
+                  GridBoxAlignment -> {
+                   "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                  AutoDelete -> False, 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                  GridBoxSpacings -> {
+                   "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                  BaseStyle -> {
+                   ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+               GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}},
+                AutoDelete -> False, 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               BaselinePosition -> {1, 1}], True -> GridBox[{{
+                 GridBox[{{
+                    TagBox["\"134.2 MB\"", "SummaryItem"]}}, 
+                  GridBoxAlignment -> {
+                   "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                  AutoDelete -> False, 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                  GridBoxSpacings -> {
+                   "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                  BaseStyle -> {
+                   ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+               GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}},
+                AutoDelete -> False, 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               BaselinePosition -> {1, 1}]}, 
+            Dynamic[Typeset`open$$], ImageSize -> Automatic]}, 
+          "SummaryPanel"], 
+         ButtonBox[
+          DynamicBox[
+           ToBoxes[
+            If[
+             
+             Or[$VersionNumber < 11.2, CurrentValue["RunningEvaluator"] =!= 
+              "Local"], 
+             Style["This object cannot be used as input.", "SummaryEmbed"], 
+             BoxForm`EmbedSummaryLabel[ByteArray, 134217928, 
+              Dynamic[Typeset`embedState$$], Automatic]], StandardForm]], 
+          ButtonFunction :> 
+          BoxForm`EmbedSummaryInterpretation[
+           "Choose", ByteArray, 134217928, 
+            7589726365996846954083478078823593995844972192753750285024, 
+            EvaluationBox[], 
+            Dynamic[Typeset`embedState$$], StandardForm, 
+            ElisionsDump`embedSummaryBoxes], DefaultBaseStyle -> 
+          "SummaryEmbedButton", ImageSize -> Inherited, 
+          BaseStyle -> {"DialogStyle"}, Enabled -> Dynamic[
+            
+            And[$VersionNumber >= 11.2, CurrentValue["RunningEvaluator"] === 
+             "Local", Typeset`embedState$$ === "Ready"]], Appearance -> 
+          Inherited, Method -> Inherited, Evaluator -> Automatic]}, 
+        "SummaryEmbedGrid"], DynamicModuleValues :> {}], 
+      StyleBox["]", "NonInterpretableSummary"]}]},
+   "CopyTag",
+   DisplayFunction->(#& ),
+   InterpretationFunction->("ByteArray[<134217728>]"& )],
+  False,
+  BoxID -> 7589726365996846954083478078823593995844972192753750285024,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellLabel->"Out[11]=",ExpressionUUID->"5eb861e9-f41a-c44e-ad9c-4ea06b65463c"]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"UnitConvert", "[", 
+ RowBox[{"RepeatedTiming", "[", 
   RowBox[{
-   RowBox[{"Quantity", "[", 
-    RowBox[{
-     RowBox[{"N", " ", "@", " ", 
-      RowBox[{"ByteCount", "[", "bytes", "]"}]}], ",", " ", "\"\<Bytes\>\""}],
-     "]"}], ",", " ", "\"\<Megabytes\>\""}], "]"}]], "Code",
- CellLabel->"In[15]:=",ExpressionUUID->"1389e522-7a1f-4def-a487-a623a88aeb11"],
+   RowBox[{"IBM32ByteArrayToReal", "[", "bytes", "]"}], ";"}], "]"}]], "Code",
+ CellLabel->"In[7]:=",ExpressionUUID->"5be24f8e-7689-4675-9dd9-6f1e10fdafac"],
 
 Cell[BoxData[
- TemplateBox[{"4.1944479999999995`", "\"MB\"", "megabytes", "\"Megabytes\""},
-  "Quantity"]], "Output",
- CellLabel->"Out[15]=",ExpressionUUID->"032646ab-64f4-4da6-a1b7-cbf0d0689ff2"]
+ RowBox[{"{", 
+  RowBox[{"0.8169618`", ",", "Null"}], "}"}]], "Output",
+ CellLabel->"Out[7]=",ExpressionUUID->"99af3e35-b764-4b43-91a7-2289cfbc6eca"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -106,18 +186,18 @@ Cell[BoxData[
       RowBox[{"ByteCount", "[", "numbers", "]"}]}], ",", 
      " ", "\"\<Bytes\>\""}], "]"}], ",", " ", "\"\<Megabytes\>\""}], 
   "]"}]], "Code",
- CellLabel->"In[16]:=",ExpressionUUID->"3930f52a-3d47-477e-852a-9bb215fa0e13"],
+ CellLabel->"In[10]:=",ExpressionUUID->"2be573f4-1083-5745-a9ac-be86d3389e92"],
 
 Cell[BoxData[
- TemplateBox[{"8.38876`", "\"MB\"", "megabytes", "\"Megabytes\""},
+ TemplateBox[{"268.435656`", "\"MB\"", "megabytes", "\"Megabytes\""},
   "Quantity"]], "Output",
- CellLabel->"Out[16]=",ExpressionUUID->"3b7f5732-c898-405b-b23c-ce95712bf967"]
+ CellLabel->"Out[10]=",ExpressionUUID->"6a2ab4d1-817d-ce49-8116-e71369cdbecc"]
 }, Open  ]]
 },
-WindowSize->{721, 781},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{721.5, 781.5},
+WindowMargins->{{Automatic, 163.5}, {Automatic, 108.75}},
 TrackCellChangeTimes->False,
-FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"53de76ec-4c12-f94f-b124-0060ca628c29"
 ]
@@ -132,20 +212,23 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[1460, 33, 433, 10, 107, "Code",ExpressionUUID->"284adb8a-e58f-4cc3-92c2-0c40e424d314"],
-Cell[1896, 45, 338, 9, 51, "Code",ExpressionUUID->"132be2fa-b490-47d0-8c3b-0a188e0796af"],
+Cell[1460, 33, 433, 10, 102, "Code",ExpressionUUID->"284adb8a-e58f-4cc3-92c2-0c40e424d314"],
+Cell[1896, 45, 395, 11, 50, "Code",ExpressionUUID->"132be2fa-b490-47d0-8c3b-0a188e0796af"],
 Cell[CellGroupData[{
-Cell[2259, 58, 258, 6, 51, "Code",ExpressionUUID->"4622dac5-5029-4039-b770-23f94e812ca9"],
-Cell[2520, 66, 167, 3, 33, "Output",ExpressionUUID->"f6f7892b-fc3d-41de-8cbc-8188927fb680"]
-}, Open  ]],
-Cell[2702, 72, 216, 5, 51, "Code",ExpressionUUID->"5be24f8e-7689-4675-9dd9-6f1e10fdafac"],
-Cell[CellGroupData[{
-Cell[2943, 81, 349, 8, 51, "Code",ExpressionUUID->"1389e522-7a1f-4def-a487-a623a88aeb11"],
-Cell[3295, 91, 196, 3, 33, "Output",ExpressionUUID->"032646ab-64f4-4da6-a1b7-cbf0d0689ff2"]
+Cell[2316, 60, 258, 6, 50, "Code",ExpressionUUID->"4622dac5-5029-4039-b770-23f94e812ca9"],
+Cell[2577, 68, 164, 3, 32, "Output",ExpressionUUID->"1c2e1895-d9b6-444a-87cf-de034cbc5881"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3528, 99, 355, 9, 51, "Code",ExpressionUUID->"3930f52a-3d47-477e-852a-9bb215fa0e13"],
-Cell[3886, 110, 185, 3, 33, "Output",ExpressionUUID->"3b7f5732-c898-405b-b23c-ce95712bf967"]
+Cell[2778, 76, 109, 1, 50, "Code",ExpressionUUID->"f6e7dd0a-babb-5644-852d-a3e91f78e1ab"],
+Cell[2890, 79, 3842, 81, 68, "Output",ExpressionUUID->"5eb861e9-f41a-c44e-ad9c-4ea06b65463c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6769, 165, 214, 4, 50, "Code",ExpressionUUID->"5be24f8e-7689-4675-9dd9-6f1e10fdafac"],
+Cell[6986, 171, 163, 3, 32, "Output",ExpressionUUID->"99af3e35-b764-4b43-91a7-2289cfbc6eca"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7186, 179, 355, 9, 50, "Code",ExpressionUUID->"2be573f4-1083-5745-a9ac-be86d3389e92"],
+Cell[7544, 190, 188, 3, 32, "Output",ExpressionUUID->"6a2ab4d1-817d-ce49-8116-e71369cdbecc"]
 }, Open  ]]
 }
 ]

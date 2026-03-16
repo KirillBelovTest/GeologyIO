@@ -1,15 +1,7 @@
 #ifndef NUMBERS_H
 #define NUMBERS_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-#include <math.h>
-#include <stdbool.h>
-
-#include "WolframLibrary.h"
-#include "WolframNumericArrayLibrary.h"
+#include "common.h"
 
 #define IBM_FLOAT_SIZE 4
 #define EXPONENT_BIAS 64

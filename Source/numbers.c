@@ -71,18 +71,20 @@ DLLEXPORT int ibm32RealToByteArray(WolframLibraryData libData, mint Argc, MArgum
         return LIBRARY_FUNCTION_ERROR;
     }
 
-    MNumericArray numbersArray = MArgument_getMNumericArray(Args[0]);
-    if (numbersArray == NULL) {
+    MNumericArray numbersTensor = MArgument_getMTensor(Args[0]);
+    if (numbersTensor == NULL) {
         return LIBRARY_TYPE_ERROR;
     }
 
     const mint numbersLen = MArgument_getInteger(Args[1]);
     if (numbersLen <= 0) {
+        libData->MTensor_disown(numbersTensor);
         return LIBRARY_DIMENSION_ERROR;
     }
 
-    double *numbers = (double *)libData->numericarrayLibraryFunctions->MNumericArray_getData(numbersArray);
+    double *numbers = (double *)libData->MTensor_getRealData(numbersTensor);
     if (numbers == NULL) {
+        libData->MTensor_disown(numbersTensor);
         return LIBRARY_FUNCTION_ERROR;
     }
 
@@ -93,11 +95,13 @@ DLLEXPORT int ibm32RealToByteArray(WolframLibraryData libData, mint Argc, MArgum
         MNumericArray_Type_UBit8, 1, &bytesLen, &bytesArray
     );
     if (err != LIBRARY_NO_ERROR) {
+        libData->MTensor_disown(numbersTensor);
         return err;
     }
 
     uint8_t *bytes = (uint8_t*)libData->numericarrayLibraryFunctions->MNumericArray_getData(bytesArray);
     if (bytes == NULL) {
+        libData->MTensor_disown(numbersTensor);
         libData->numericarrayLibraryFunctions->MNumericArray_free(bytesArray);
         return LIBRARY_FUNCTION_ERROR;
     }
@@ -105,6 +109,9 @@ DLLEXPORT int ibm32RealToByteArray(WolframLibraryData libData, mint Argc, MArgum
     ibm_32_double_to_byte_array(numbers, bytes, numbersLen);
 
     MArgument_setMNumericArray(Res, bytesArray);
+
+    libData->MTensor_disown(numbersTensor);
+
     return LIBRARY_NO_ERROR;
 }
 
@@ -143,7 +150,6 @@ DLLEXPORT int ibm32ByteArrayToReal(WolframLibraryData libData, mint Argc, MArgum
     double *numbers = (double*)libData->MTensor_getRealData(numbersTensor);
     if (numbers == NULL) {
         libData->numericarrayLibraryFunctions->MNumericArray_disown(bytesArray);
-        libData->MTensor_disown(numbersTensor);
         libData->MTensor_free(numbersTensor);
         return LIBRARY_FUNCTION_ERROR;
     }
@@ -153,7 +159,6 @@ DLLEXPORT int ibm32ByteArrayToReal(WolframLibraryData libData, mint Argc, MArgum
     MArgument_setMTensor(Res, numbersTensor);
 
     libData->numericarrayLibraryFunctions->MNumericArray_disown(bytesArray);
-    libData->MTensor_disown(numbersTensor);
 
     return LIBRARY_NO_ERROR;
 }

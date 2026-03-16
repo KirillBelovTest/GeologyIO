@@ -62,11 +62,11 @@ Block[{$LibraryPath = $libraryDirectory}, FindLibrary["geologyio"]];
 
 
 ibm32RealToByteArray =
-LibraryFunctionLoad[$library, "ibm32RealToByteArray", {{_Real, 1, "Constant"}, Integer}, "ByteArray"];
+LibraryFunctionLoad[$library, "ibm32RealToByteArray", {{_Real, 1, "Shared"}, Integer}, LibraryDataType[ByteArray]];
 
 
 ibm32ByteArrayToReal =
-LibraryFunctionLoad[$library, "ibm32ByteArrayToReal", {{LibraryDataType[ByteArray], "Shared"}, Integer}, {_Real, 1, "Shared"}];
+LibraryFunctionLoad[$library, "ibm32ByteArrayToReal", {{LibraryDataType[ByteArray], "Shared"}, Integer}, {_Real, 1}];
 
 
 IBM32RealToByteArrayCompiled := IBM32RealToByteArrayCompiled =
