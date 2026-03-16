@@ -2,7 +2,7 @@
 
 PacletObject[
   <|
-    "Name" -> "KirillBelov/GeologyIO",
+    "Name" -> "WLJS/GeologyIO",
     "Description" -> "Importing and exporting for specific geology file formats",
     "Creator" -> "Kirill Belov <kirillbelovtest@gmail.com>",
     "URL" -> "https://resources.wolframcloud.com/PacletRepository/resources/KirillBelov/GeologyIO",
@@ -18,15 +18,12 @@ PacletObject[
         "Kernel",
         "Root" -> "Kernel",
         "Context" -> {
-          {"KirillBelov`GeologyIO`", "GeologyIO.wl"}, 
-          {"KirillBelov`GeologyIO`SEGY`", "SEGY.wl"}, 
-          {"KirillBelov`GeologyIO`EBCDIC`", "EBCDIC.wl"}, 
-          {"KirillBelov`GeologyIO`Numbers`", "Numbers.wl"}
+          {"WLJS`GeologyIO`", "GeologyIO.wl"},
+          {"WLJS`GeologyIO`SEGY`", "SEGY.wl"},
+          {"WLJS`GeologyIO`EBCDIC`", "EBCDIC.wl"},
+          {"WLJS`GeologyIO`Numbers`", "Numbers.wl"}
         },
-        "Symbols" -> {
-          "KirillBelov`GeologyIO`Numbers`ToIBMFloat32", 
-          "KirillBelov`GeologyIO`Numbers`FromIBMFloat32"
-        }
+        "Symbols" -> {}
       },
       {
         "Documentation",

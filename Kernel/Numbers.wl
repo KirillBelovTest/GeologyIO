@@ -66,7 +66,7 @@ LibraryFunctionLoad[$library, "ibm32RealToByteArray", {{_Real, 1, "Constant"}, I
 
 
 ibm32ByteArrayToReal =
-LibraryFunctionLoad[$library, "ibm32ByteArrayToReal", {{"ByteArray", "Shared"}, Integer}, {_Real, 1}];
+LibraryFunctionLoad[$library, "ibm32ByteArrayToReal", {{LibraryDataType[ByteArray], "Shared"}, Integer}, {_Real, 1, "Shared"}];
 
 
 IBM32RealToByteArrayCompiled := IBM32RealToByteArrayCompiled =
