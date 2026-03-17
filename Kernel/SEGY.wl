@@ -86,7 +86,7 @@ Module[{
         traceDataByteArray = readSegyTraceData[stream, i, traceByteCount];
 
         <|
-            "Header" -> byteArrayToSegyTraceHeader[traceDataByteArray],
+            "Header" -> byteArrayToSegyTraceHeader[traceHeaderByteArray],
             "Data" -> getTraceData[traceDataByteArray, samplesFormatCode]
         |>,
         {i, 1, numberDataTraces}

@@ -112,25 +112,25 @@ DLLEXPORT int byteArrayToSegyTraceHeader(WolframLibraryData libData, mint Argc, 
     uint8_t *traceHeaderBytes = libData->numericarrayLibraryFunctions->MNumericArray_getData(traceHeaderByteArray);
     TraceHeader *traceHeader = (TraceHeader*)traceHeaderBytes;
 
-    mint dims[1] = {91};
+    const mint dims[1] = {91};
     MTensor traceHeaderList;
-    libData->MTensor_new(MType_Integer, 1, &dims, &traceHeaderList);
+    libData->MTensor_new(MType_Integer, 1, dims, &traceHeaderList);
 
     mint *data = libData->MTensor_getIntegerData(traceHeaderList);
 
     // 1 (int32)
-    data[0]  = bswap_32(traceHeader->TraceSequenceLine);
-    data[1]  = bswap_32(traceHeader->TraceSequenceFile);
-    data[2]  = bswap_32(traceHeader->FieldRecord);
-    data[3]  = bswap_32(traceHeader->TraceNumber);
-    data[4]  = bswap_32(traceHeader->EnergySourcePoint);
-    data[5]  = bswap_32(traceHeader->cdp);
-    data[6]  = bswap_32(traceHeader->cdpTrace);
+    data[0] = bswap_32(traceHeader->TraceSequenceLine);
+    data[1] = bswap_32(traceHeader->TraceSequenceFile);
+    data[2] = bswap_32(traceHeader->FieldRecord);
+    data[3] = bswap_32(traceHeader->TraceNumber);
+    data[4] = bswap_32(traceHeader->EnergySourcePoint);
+    data[5] = bswap_32(traceHeader->cdp);
+    data[6] = bswap_32(traceHeader->cdpTrace);
 
     // 2 (int16 -> expand to mint)
-    data[7]  = bswap_16(traceHeader->TraceIdenitifactionCode);
-    data[8]  = bswap_16(traceHeader->NSummedTraces);
-    data[9]  = bswap_16(traceHeader->NStackedTraces);
+    data[7] = bswap_16(traceHeader->TraceIdenitifactionCode);
+    data[8] = bswap_16(traceHeader->NSummedTraces);
+    data[9] = bswap_16(traceHeader->NStackedTraces);
     data[10] = bswap_16(traceHeader->DataUse);
 
     // 3 (int32)
