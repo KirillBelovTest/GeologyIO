@@ -1,7 +1,8 @@
 (* ::Package:: *)
 
-BeginPackage["WLJS`GeologyIO`IBM32Float`", {
-    "CCompilerDriver`", "LibraryLink`"
+BeginPackage["WLJS`GeologyIO`Numbers`", {
+    "CCompilerDriver`",
+    "LibraryLink`"
 }];
 
 

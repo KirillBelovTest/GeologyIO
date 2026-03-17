@@ -21,7 +21,8 @@ PacletObject[
           {"WLJS`GeologyIO`", "GeologyIO.wl"},
           {"WLJS`GeologyIO`SEGY`", "SEGY.wl"},
           {"WLJS`GeologyIO`EBCDIC`", "EBCDIC.wl"},
-          {"WLJS`GeologyIO`Numbers`", "Numbers.wl"}
+          {"WLJS`GeologyIO`Numbers`", "Numbers.wl"},
+          {"WLJS`GeologyIO`IO`", "IO.wl"}
         },
         "Symbols" -> {}
       },

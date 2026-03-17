@@ -1,31 +1,31 @@
 (* :Package: *)
 
-BeginPackage["KirillBelov`GeologyIO`EBCDIC`"]; 
+BeginPackage["WLJS`GeologyIO`EBCDIC`"];
 
 
 (*Names*)
 
 
-EBCDICToString::usage = 
-"ToIBMFloat32[numbers] returns byte array in IBM Float 32 format."; 
+EBCDICToString::usage =
+"ToIBMFloat32[numbers] returns byte array in IBM Float 32 format.";
 
 
-StringToEBCDIC::usage = 
-"ToIBMFloat32[byteArray] returns numbers from IBM Float 32 byte array."; 
+StringToEBCDIC::usage =
+"ToIBMFloat32[byteArray] returns numbers from IBM Float 32 byte array.";
 
 
-Begin["`Private`"]; 
+Begin["`Private`"];
 
 
 (*Public*)
 
 
-EBCDICToString[chars_ByteArray] := 
-FromCharacterCode[Normal[chars] /. $EBCDICToASCII]; 
+EBCDICToString[chars_ByteArray] :=
+FromCharacterCode[Normal[chars] /. $EBCDICToASCII];
 
 
-StringToEBCDIC[text_String] := 
-ByteArray[ToCharacterCode[text] /. $ASCIIToEBCDIC]; 
+StringToEBCDIC[text_String] :=
+ByteArray[ToCharacterCode[text] /. $ASCIIToEBCDIC];
 
 
 (*Internal*)
@@ -68,7 +68,7 @@ $EBCDICToASCII = Dispatch[{
 	235->26,236->26,237->26,238->26,239->26,240->48,241->49,
 	242->50,243->51,244->52,245->53,246->54,247->55,248->56,
 	249->57,250->26,251->26,252->26,253->26,254->26,255->26
-}]; 
+}];
 
 $ASCIIToEBCDIC = Dispatch[{
 	0->0,1->1,2->2,3->3,4->26,5->9,6->26,7->127,8->26,9->26,
@@ -110,7 +110,7 @@ $ASCIIToEBCDIC = Dispatch[{
 }];
 
 
-End[(*`Private`*)]; 
+End[(*`Private`*)];
 
 
-EndPackage[(*KirillBelov`GeologyIO`Numbers`*)]; 
+EndPackage[(*KirillBelov`GeologyIO`Numbers`*)];

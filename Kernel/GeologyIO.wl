@@ -1,8 +1,11 @@
 (* ::Package:: *)
 
-BeginPackage["KirillBelov`GeologyIO`", {
-    "KirillBelov`GeologyIO`SEGY`"
-}]; 
+BeginPackage["WLJS`GeologyIO`", {
+    "WLJS`GeologyIO`IO`",
+    "WLJS`GeologyIO`Numbers`",
+    "WLJS`GeologyIO`EBCDIC`",
+    "WLJS`GeologyIO`SEGY`"
+}];
 
 
-EndPackage[] (*KirillBelov`GeologyIO`*)
+EndPackage[] (*WLJS`GeologyIO`*)
