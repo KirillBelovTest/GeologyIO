@@ -91,6 +91,32 @@ DLLEXPORT int readSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgume
     return LIBRARY_NO_ERROR;
 }
 
+DLLEXPORT int getSegyTraceHeaders(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
+    FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
+    MTensor indexesTensor = MArgument_getMTensor(Args[1]);
+    mint *indexes = libData->MTensor_getIntegerData(indexesTensor);
+    mint count = MArgument_getInteger(Args[2]);
+    mint traceSize = MArgument_getInteger(Args[3]);
+
+    mint dims[2] = {count, SEGY_TRACE_HEADER_LENGTH};
+    MTensor traceHeaders;
+    libData->MTensor_new(MType_Integer, 2, dims, &traceHeaders);
+    mint *data = (uint8_t *)libData->MTensor_getIntegerData(traceHeaders);
+    uint8_t buffer[SEGY_TRACE_HEADER_SIZE];
+
+    long firstTracePosition = SEGY_TEXT_HEADER_SIZE + SEGY_BINARY_HEADER_SIZE;
+    for (int i = 0; i < count; i++){
+        long index = indexes[i];
+        fseek(file, firstTracePosition + traceSize * index, SEEK_SET);
+        fread(buffer, 1, SEGY_TRACE_HEADER_SIZE, file);
+        int position = i * SEGY_TRACE_HEADER_LENGTH;
+        segy_trace_header_byte_array_to_mint(buffer, data[position]);
+    }
+
+    MArgument_setMNumericArray(Res, traceHeaders);
+    return LIBRARY_NO_ERROR;
+}
+
 DLLEXPORT int readSegyTraceData(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
     mint index = MArgument_getInteger(Args[1]);
@@ -163,97 +189,98 @@ DLLEXPORT int byteArrayToSegyBinaryHeader(WolframLibraryData libData, mint Argc,
     return LIBRARY_NO_ERROR;
 }
 
+void segy_trace_header_byte_array_to_mint(uint8_t *input, mint *output) {
+    SEGYTraceHeader *header = (SEGYTraceHeader*)input;
+    output[0] = (mint)bswap_32(header->tracl);
+    output[1] = (mint)bswap_32(header->tracr);
+    output[2] = (mint)bswap_32(header->fldr);
+    output[3] = (mint)bswap_32(header->tracf);
+    output[4] = (mint)bswap_32(header->ep);
+    output[5] = (mint)bswap_32(header->cdp);
+    output[6] = (mint)bswap_32(header->cdpt);
+    output[7] = (mint)bswap_16(header->trid);
+    output[8] = (mint)bswap_16(header->nvs);
+    output[9] = (mint)bswap_16(header->nhs);
+    output[10] = (mint)bswap_16(header->duse);
+    output[11] = (mint)bswap_32(header->offset);
+    output[12] = (mint)bswap_32(header->gelev);
+    output[13] = (mint)bswap_32(header->selev);
+    output[14] = (mint)bswap_32(header->sdepth);
+    output[15] = (mint)bswap_32(header->gdel);
+    output[16] = (mint)bswap_32(header->sdel);
+    output[17] = (mint)bswap_32(header->swdep);
+    output[18] = (mint)bswap_32(header->gwdep);
+    output[19] = (mint)bswap_16(header->scalel);
+    output[20] = (mint)bswap_16(header->scalco);
+    output[21] = (mint)bswap_32(header->sx);
+    output[22] = (mint)bswap_32(header->sy);
+    output[23] = (mint)bswap_32(header->gx);
+    output[24] = (mint)bswap_32(header->gy);
+    output[25] = (mint)bswap_16(header->counit);
+    output[26] = (mint)bswap_16(header->wevel);
+    output[27] = (mint)bswap_16(header->swevel);
+    output[28] = (mint)bswap_16(header->sut);
+    output[29] = (mint)bswap_16(header->gut);
+    output[30] = (mint)bswap_16(header->sstat);
+    output[31] = (mint)bswap_16(header->gstat);
+    output[32] = (mint)bswap_16(header->tstat);
+    output[33] = (mint)bswap_16(header->laga);
+    output[34] = (mint)bswap_16(header->lagb);
+    output[35] = (mint)bswap_16(header->delrt);
+    output[36] = (mint)bswap_16(header->muts);
+    output[37] = (mint)bswap_16(header->mute);
+    output[38] = (mint)bswap_16(header->ns);
+    output[39] = (mint)bswap_16(header->dt);
+    output[40] = (mint)bswap_16(header->gain);
+    output[41] = (mint)bswap_16(header->igain);
+    output[42] = (mint)bswap_16(header->gaing);
+    output[43] = (mint)bswap_16(header->corr);
+    output[44] = (mint)bswap_16(header->sfs);
+    output[45] = (mint)bswap_16(header->sfe);
+    output[46] = (mint)bswap_16(header->slen);
+    output[47] = (mint)bswap_16(header->styp);
+    output[48] = (mint)bswap_16(header->stas);
+    output[49] = (mint)bswap_16(header->stae);
+    output[50] = (mint)bswap_16(header->tatyp);
+    output[51] = (mint)bswap_16(header->afilf);
+    output[52] = (mint)bswap_16(header->afils);
+    output[53] = (mint)bswap_16(header->nofilf);
+    output[54] = (mint)bswap_16(header->nofils);
+    output[55] = (mint)bswap_16(header->lcf);
+    output[56] = (mint)bswap_16(header->hcf);
+    output[57] = (mint)bswap_16(header->lcs);
+    output[58] = (mint)bswap_16(header->hcs);
+    output[59] = (mint)bswap_16(header->year);
+    output[60] = (mint)bswap_16(header->day);
+    output[61] = (mint)bswap_16(header->hour);
+    output[62] = (mint)bswap_16(header->minute);
+    output[63] = (mint)bswap_16(header->sec);
+    output[64] = (mint)bswap_16(header->tny);
+    output[65] = (mint)bswap_16(header->twt);
+    output[66] = (mint)bswap_16(header->geono);
+    output[67] = (mint)bswap_16(header->grnors);
+    output[68] = (mint)bswap_16(header->grnofr);
+    output[69] = (mint)bswap_16(header->grnols);
+    output[70] = (mint)bswap_16(header->gaps);
+    output[71] = (mint)bswap_16(header->otrav);
+    output[72] = (mint)bswap_32(header->cdpx);
+    output[73] = (mint)bswap_32(header->cdpy);
+    output[74] = (mint)bswap_32(header->iline);
+    output[75] = (mint)bswap_32(header->xline);
+    output[76] = (mint)bswap_32(header->shpoint);
+    output[77] = (mint)bswap_16(header->shpscal);
+    output[78] = (mint)bswap_16(header->tvalunit);
+    output[79] = (mint)bswap_32(header->transc);
+}
+
 DLLEXPORT int byteArrayToSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     MNumericArray byteArray = MArgument_getMNumericArray(Args[0]);
     uint8_t *bytes = libData->numericarrayLibraryFunctions->MNumericArray_getData(byteArray);
-    SEGYTraceHeader *header = (SEGYTraceHeader*)bytes;
-
     MTensor headerList;
     const mint dims[1] = {SEGY_TRACE_HEADER_LENGTH};
     libData->MTensor_new(MType_Integer, 1, dims, &headerList);
     mint *data = libData->MTensor_getIntegerData(headerList);
-
-    data[0] = (mint)bswap_32(header->tracl);
-    data[1] = (mint)bswap_32(header->tracr);
-    data[2] = (mint)bswap_32(header->fldr);
-    data[3] = (mint)bswap_32(header->tracf);
-    data[4] = (mint)bswap_32(header->ep);
-    data[5] = (mint)bswap_32(header->cdp);
-    data[6] = (mint)bswap_32(header->cdpt);
-    data[7] = (mint)bswap_16(header->trid);
-    data[8] = (mint)bswap_16(header->nvs);
-    data[9] = (mint)bswap_16(header->nhs);
-    data[10] = (mint)bswap_16(header->duse);
-    data[11] = (mint)bswap_32(header->offset);
-    data[12] = (mint)bswap_32(header->gelev);
-    data[13] = (mint)bswap_32(header->selev);
-    data[14] = (mint)bswap_32(header->sdepth);
-    data[15] = (mint)bswap_32(header->gdel);
-    data[16] = (mint)bswap_32(header->sdel);
-    data[17] = (mint)bswap_32(header->swdep);
-    data[18] = (mint)bswap_32(header->gwdep);
-    data[19] = (mint)bswap_16(header->scalel);
-    data[20] = (mint)bswap_16(header->scalco);
-    data[21] = (mint)bswap_32(header->sx);
-    data[22] = (mint)bswap_32(header->sy);
-    data[23] = (mint)bswap_32(header->gx);
-    data[24] = (mint)bswap_32(header->gy);
-    data[25] = (mint)bswap_16(header->counit);
-    data[26] = (mint)bswap_16(header->wevel);
-    data[27] = (mint)bswap_16(header->swevel);
-    data[28] = (mint)bswap_16(header->sut);
-    data[29] = (mint)bswap_16(header->gut);
-    data[30] = (mint)bswap_16(header->sstat);
-    data[31] = (mint)bswap_16(header->gstat);
-    data[32] = (mint)bswap_16(header->tstat);
-    data[33] = (mint)bswap_16(header->laga);
-    data[34] = (mint)bswap_16(header->lagb);
-    data[35] = (mint)bswap_16(header->delrt);
-    data[36] = (mint)bswap_16(header->muts);
-    data[37] = (mint)bswap_16(header->mute);
-    data[38] = (mint)bswap_16(header->ns);
-    data[39] = (mint)bswap_16(header->dt);
-    data[40] = (mint)bswap_16(header->gain);
-    data[41] = (mint)bswap_16(header->igain);
-    data[42] = (mint)bswap_16(header->gaing);
-    data[43] = (mint)bswap_16(header->corr);
-    data[44] = (mint)bswap_16(header->sfs);
-    data[45] = (mint)bswap_16(header->sfe);
-    data[46] = (mint)bswap_16(header->slen);
-    data[47] = (mint)bswap_16(header->styp);
-    data[48] = (mint)bswap_16(header->stas);
-    data[49] = (mint)bswap_16(header->stae);
-    data[50] = (mint)bswap_16(header->tatyp);
-    data[51] = (mint)bswap_16(header->afilf);
-    data[52] = (mint)bswap_16(header->afils);
-    data[53] = (mint)bswap_16(header->nofilf);
-    data[54] = (mint)bswap_16(header->nofils);
-    data[55] = (mint)bswap_16(header->lcf);
-    data[56] = (mint)bswap_16(header->hcf);
-    data[57] = (mint)bswap_16(header->lcs);
-    data[58] = (mint)bswap_16(header->hcs);
-    data[59] = (mint)bswap_16(header->year);
-    data[60] = (mint)bswap_16(header->day);
-    data[61] = (mint)bswap_16(header->hour);
-    data[62] = (mint)bswap_16(header->minute);
-    data[63] = (mint)bswap_16(header->sec);
-    data[64] = (mint)bswap_16(header->tny);
-    data[65] = (mint)bswap_16(header->twt);
-    data[66] = (mint)bswap_16(header->geono);
-    data[67] = (mint)bswap_16(header->grnors);
-    data[68] = (mint)bswap_16(header->grnofr);
-    data[69] = (mint)bswap_16(header->grnols);
-    data[70] = (mint)bswap_16(header->gaps);
-    data[71] = (mint)bswap_16(header->otrav);
-    data[72] = (mint)bswap_32(header->cdpx);
-    data[73] = (mint)bswap_32(header->cdpy);
-    data[74] = (mint)bswap_32(header->iline);
-    data[75] = (mint)bswap_32(header->xline);
-    data[76] = (mint)bswap_32(header->shpoint);
-    data[77] = (mint)bswap_16(header->shpscal);
-    data[78] = (mint)bswap_16(header->tvalunit);
-    data[79] = (mint)bswap_32(header->transc);
-
+    segy_trace_header_byte_array_to_mint(byteArray, data);
     libData->numericarrayLibraryFunctions->MNumericArray_disown(byteArray);
     MArgument_setMTensor(Res, headerList);
     return LIBRARY_NO_ERROR;

@@ -204,6 +204,14 @@ readSegyTraceHeader =
 LibraryFunctionLoad[$library, "readSegyTraceHeader", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
 
 
+getSegyTraceHeaders::usage =
+"getSegyTraceHeaders[file, indexes, count, traceSize]";
+
+
+getSegyTraceHeaders =
+LibraryFunctionLoad[$library, "getSegyTraceHeaders", {Integer, {_Integer, 2}, Integer, Integer}, {Integer, 2}];
+
+
 readSegyTraceData::usage =
 "readSegyTraceData[file, traceNumber, traceSize]";
 

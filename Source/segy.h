@@ -28,6 +28,8 @@ DLLEXPORT int byteArrayToSegyBinaryHeader(WolframLibraryData libData, mint Argc,
 
 DLLEXPORT int byteArrayToSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
+DLLEXPORT int getSegyTraceHeaders(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
+
 #pragma pack(push, 1)
 typedef struct {
     int32_t  jobId;                // 3201
