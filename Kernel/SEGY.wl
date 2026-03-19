@@ -46,7 +46,8 @@ Options[SEGYImport] = {
 SEGYImport[file: _String | _File, OptionsPattern[]] /;
 FileExistsQ[file] :=
 Module[{
-    stream = GeologyIOOpenFile[AbsoluteFileName[file]],
+    fileName = AbsoluteFileName[file],
+    stream,
     textHeaderByteArray,
     textHeader,
     binaryHeaderByteArray,
@@ -55,9 +56,15 @@ Module[{
     samplesFormatCode,
     traceByteCount,
     numberDataTraces,
-    traces,
-    metadata
+    metadata,
+    traceHeaders,
+    traceData
 },
+    If[KeyExistsQ[$streams, fileName],
+        stream = $streams[fileName],
+        stream = GeologyIOOpenFile[fileName]
+    ];
+
     textHeaderByteArray = readSegyTextHeader[stream];
     textHeader = EBCDICToString[textHeaderByteArray];
 
@@ -78,28 +85,28 @@ Module[{
         "TraceByteCount" -> traceByteCount
     |>;
 
-    traces = Table[
-        traceHeaderByteArray = readSegyTraceHeader[stream, i, traceByteCount];
-        traceDataByteArray = readSegyTraceData[stream, i, traceByteCount];
-
-        <|
-            "Header" -> byteArrayToSegyTraceHeader[traceHeaderByteArray],
-            "Data" -> getTraceData[traceDataByteArray, samplesFormatCode]
-        |>,
-        {i, 1, numberDataTraces}
-    ];
+    traceHeaders = getSegyTraceHeaders[stream, Range[numberDataTraces], numberDataTraces, traceByteCount];
+    traceData = getSegyTracesData[stream, Range[numberDataTraces], numberDataTraces, traceByteCount, 0, numberOfSamplesForReel];
 
     (*Return*)
     SEGYData[<|
         "Metadata" -> metadata,
         "TextHeader" -> textHeader,
         "BinaryHeader" -> binaryHeader,
-        "Traces" -> traces
+        "TraceHeaders" -> traceHeaders,
+        "TraceData" -> traceData
     |>]
 ];
 
 
+SEGYData[assoc_Association][part__] :=
+assoc[[part]];
+
+
 (*Internal*)
+
+
+If[!ValueQ[$streams], $streams = <||>];
 
 
 $sampleSize = <|

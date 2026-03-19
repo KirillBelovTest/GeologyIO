@@ -1,5 +1,5 @@
 # ignoring files for the Wolfram Language projects
-
+/.vscode
 /.idea
 /build
 /docbuild.xml
