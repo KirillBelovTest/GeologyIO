@@ -74,6 +74,7 @@ Module[{
         "File" -> AbsoluteFileName[file],
         "Stream" -> stream,
         "NTraces" -> numberDataTraces,
+        "NSamples" -> numberOfSamplesForReel,
         "TraceByteCount" -> traceByteCount
     |>;
 
@@ -221,12 +222,12 @@ readSegyTraceData =
 LibraryFunctionLoad[$library, "readSegyTraceData", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
 
 
-getSegyTraceData::usage =
-"getSegyTraceData[file, indexes, count, traceSize]";
+getSegyTracesData::usage =
+"getSegyTracesData[file, indexes, count, traceSize, fromSample, samplesCount]";
 
 
-getSegyTraceData =
-LibraryFunctionLoad[$library, "getSegyTraceData", {Integer, {_Integer, 1}, Integer, Integer, Integer}, LibraryDataType[NumericArray, "Real64", 2]];
+getSegyTracesData =
+LibraryFunctionLoad[$library, "getSegyTracesData", {Integer, {_Integer, 1}, Integer, Integer, Integer, Integer}, LibraryDataType[NumericArray, "Real64", 2]];
 
 
 byteArrayToSegyBinaryHeader::usage =

@@ -131,7 +131,7 @@ DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument
     MNumericArray traceData;
     libData->numericarrayLibraryFunctions->MNumericArray_new(MNumericArray_Type_Real64, 2, dims, &traceData);
     mreal *data = (mreal *)libData->numericarrayLibraryFunctions->MNumericArray_getData(traceData);
-    uint8_t *buffer = samplesCount * 4;;
+    uint8_t *buffer = malloc(samplesCount * 4);
 
     long firstTracePosition = SEGY_TEXT_HEADER_SIZE + SEGY_BINARY_HEADER_SIZE + SEGY_TRACE_HEADER_SIZE;
     for (mint i = 0; i < count; i++){
@@ -142,6 +142,7 @@ DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument
         ibm_32_byte_array_to_double(buffer, &data[position], samplesCount);
     }
 
+    free(buffer);
     MArgument_setMNumericArray(Res, traceData);
     return LIBRARY_NO_ERROR;
 }
