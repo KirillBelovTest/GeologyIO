@@ -73,7 +73,8 @@ Module[{
     metadata = <|
         "File" -> AbsoluteFileName[file],
         "Stream" -> stream,
-        "NTraces" -> numberDataTraces
+        "NTraces" -> numberDataTraces,
+        "TraceByteCount" -> traceByteCount
     |>;
 
     traces = Table[
@@ -209,7 +210,7 @@ getSegyTraceHeaders::usage =
 
 
 getSegyTraceHeaders =
-LibraryFunctionLoad[$library, "getSegyTraceHeaders", {Integer, {_Integer, 2}, Integer, Integer}, {Integer, 2}];
+LibraryFunctionLoad[$library, "getSegyTraceHeaders", {Integer, {_Integer, 1}, Integer, Integer}, {Integer, 2}];
 
 
 readSegyTraceData::usage =
@@ -218,6 +219,14 @@ readSegyTraceData::usage =
 
 readSegyTraceData =
 LibraryFunctionLoad[$library, "readSegyTraceData", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
+
+
+getSegyTraceData::usage =
+"getSegyTraceData[file, indexes, count, traceSize]";
+
+
+getSegyTraceData =
+LibraryFunctionLoad[$library, "getSegyTraceData", {Integer, {_Integer, 1}, Integer, Integer, Integer}, LibraryDataType[NumericArray, "Real64", 2]];
 
 
 byteArrayToSegyBinaryHeader::usage =

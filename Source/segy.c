@@ -1,5 +1,6 @@
 #include "io.h"
 #include "segy.h"
+#include "numbers.h"
 
 #define SEGY_TEXT_HEADER_SIZE 3200
 #define SEGY_BINARY_HEADER_SIZE 400
@@ -101,19 +102,47 @@ DLLEXPORT int getSegyTraceHeaders(WolframLibraryData libData, mint Argc, MArgume
     mint dims[2] = {count, SEGY_TRACE_HEADER_LENGTH};
     MTensor traceHeaders;
     libData->MTensor_new(MType_Integer, 2, dims, &traceHeaders);
-    mint *data = (uint8_t *)libData->MTensor_getIntegerData(traceHeaders);
+    mint *data = libData->MTensor_getIntegerData(traceHeaders);
     uint8_t buffer[SEGY_TRACE_HEADER_SIZE];
 
     long firstTracePosition = SEGY_TEXT_HEADER_SIZE + SEGY_BINARY_HEADER_SIZE;
-    for (int i = 0; i < count; i++){
+    for (mint i = 0; i < count; i++){
         long index = indexes[i];
         fseek(file, firstTracePosition + traceSize * index, SEEK_SET);
         fread(buffer, 1, SEGY_TRACE_HEADER_SIZE, file);
-        int position = i * SEGY_TRACE_HEADER_LENGTH;
-        segy_trace_header_byte_array_to_mint(buffer, data[position]);
+        mint position = i * SEGY_TRACE_HEADER_LENGTH;
+        segy_trace_header_byte_array_to_mint(buffer, &data[position]);
     }
 
-    MArgument_setMNumericArray(Res, traceHeaders);
+    MArgument_setMTensor(Res, traceHeaders);
+    return LIBRARY_NO_ERROR;
+}
+
+DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
+    FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
+    MTensor indexesTensor = MArgument_getMTensor(Args[1]);
+    mint *indexes = libData->MTensor_getIntegerData(indexesTensor);
+    mint count = MArgument_getInteger(Args[2]);
+    mint traceSize = MArgument_getInteger(Args[3]);
+    mint fromSample = MArgument_getInteger(Args[4]);
+    mint samplesCount = MArgument_getInteger(Args[5]);
+
+    mint dims[2] = {count, samplesCount};
+    MNumericArray traceData;
+    libData->numericarrayLibraryFunctions->MNumericArray_new(MNumericArray_Type_Real64, 2, dims, &traceData);
+    mreal *data = (mreal *)libData->numericarrayLibraryFunctions->MNumericArray_getData(traceData);
+    uint8_t *buffer = samplesCount * 4;;
+
+    long firstTracePosition = SEGY_TEXT_HEADER_SIZE + SEGY_BINARY_HEADER_SIZE + SEGY_TRACE_HEADER_SIZE;
+    for (mint i = 0; i < count; i++){
+        long index = indexes[i];
+        fseek(file, firstTracePosition + traceSize * index + fromSample * 4, SEEK_SET);
+        fread(buffer, 1, samplesCount * 4, file);
+        mint position = i * samplesCount;
+        ibm_32_byte_array_to_double(buffer, &data[position], samplesCount);
+    }
+
+    MArgument_setMNumericArray(Res, traceData);
     return LIBRARY_NO_ERROR;
 }
 
@@ -280,7 +309,7 @@ DLLEXPORT int byteArrayToSegyTraceHeader(WolframLibraryData libData, mint Argc, 
     const mint dims[1] = {SEGY_TRACE_HEADER_LENGTH};
     libData->MTensor_new(MType_Integer, 1, dims, &headerList);
     mint *data = libData->MTensor_getIntegerData(headerList);
-    segy_trace_header_byte_array_to_mint(byteArray, data);
+    segy_trace_header_byte_array_to_mint(bytes, data);
     libData->numericarrayLibraryFunctions->MNumericArray_disown(byteArray);
     MArgument_setMTensor(Res, headerList);
     return LIBRARY_NO_ERROR;
