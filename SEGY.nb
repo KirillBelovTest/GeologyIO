@@ -23,10 +23,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[      1060,         20]
-NotebookDataLength[     11758,        302]
-NotebookOptionsPosition[     10309,        264]
-NotebookOutlinePosition[     10730,        281]
-CellTagsIndexPosition[     10687,        278]
+NotebookDataLength[     12916,        329]
+NotebookOptionsPosition[     11454,        291]
+NotebookOutlinePosition[     11889,        308]
+CellTagsIndexPosition[     11846,        305]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -49,14 +49,27 @@ Cell[BoxData[
  RowBox[{"AbsoluteTiming", "[", 
   RowBox[{
    RowBox[{"data", " ", "=", " ", 
-    RowBox[{"SEGYImport", "[", "\"\<ExampleData/Marmousi.segy\>\"", "]"}]}], 
-   ";"}], "]"}]], "Code",
- CellLabel->"In[5]:=",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
+    RowBox[{
+    "SEGYImport", 
+     "[", "\"\<C:\\\\Users\\\\Kirill\\\\Downloads\\\\Astrakhan2025\\\\\
+Astrakhan2025\\\\trace_resample.sgy\>\"", "]"}]}], ";"}], "]"}]], "Code",
+ CellLabel->"In[24]:=",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.127026`", ",", "Null"}], "}"}]], "Output",
- CellLabel->"Out[5]=",ExpressionUUID->"60604474-aa8c-4319-9ba2-94f5405f4707"]
+  RowBox[{"3.4855883`", ",", "Null"}], "}"}]], "Output",
+ CellLabel->"Out[24]=",ExpressionUUID->"dbd9ed2e-8ec7-754e-b715-69f8ca263087"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileByteCount", "[", "\"\<ExampleData/Marmousi.segy\>\"", 
+  "]"}]], "Code",
+ CellLabel->"In[21]:=",ExpressionUUID->"96a7f991-c677-7942-af5e-36bd9df1972c"],
+
+Cell[BoxData["432720"], "Output",
+ CellLabel->"Out[21]=",ExpressionUUID->"c341587d-9c04-3c4f-8cb3-b364bc7ae0b3"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -83,10 +96,8 @@ Cell[BoxData[
    ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
    "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
    ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
-   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
-   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
-   "0"}], "}"}]], "Output",
- CellLabel->"Out[6]=",ExpressionUUID->"592288d2-337f-48b1-82e1-11ac5df8e188"]
+   "0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellLabel->"Out[6]=",ExpressionUUID->"305f5eb2-d6d7-cd44-a53f-c751cfb7d701"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -95,19 +106,20 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"data", "[", 
    RowBox[{"[", "1", "]"}], "]"}], "[", 
-  RowBox[{"[", "\"\<Metadata\>\"", "]"}], "]"}]], "Input",
+  RowBox[{"[", "\"\<Metadata\>\"", "]"}], "]"}]], "Code",
  CellLabel->"In[7]:=",ExpressionUUID->"957d49c4-ec46-46ac-81da-67cf7baa2d48"],
 
 Cell[BoxData[
  RowBox[{"\[LeftAssociation]", 
   RowBox[{
    RowBox[{"\<\"File\"\>", 
-    "\[Rule]", "\<\"/Users/daria/Projects/GeologyIO/ExampleData/Marmousi.segy\
-\"\>"}], ",", 
-   RowBox[{"\<\"Stream\"\>", "\[Rule]", "8551385296"}], ",", 
+    "\[Rule]", \
+"\<\"C:\\\\Users\\\\Kirill\\\\Projects\\\\GeologyIO\\\\ExampleData\\\\\
+Marmousi.segy\"\>"}], ",", 
+   RowBox[{"\<\"Stream\"\>", "\[Rule]", "175620480"}], ",", 
    RowBox[{"\<\"NTraces\"\>", "\[Rule]", "298"}]}], 
   "\[RightAssociation]"}]], "Output",
- CellLabel->"Out[7]=",ExpressionUUID->"41b434b6-7faf-4ceb-9c73-3cbd1d4e3935"]
+ CellLabel->"Out[7]=",ExpressionUUID->"5e47cd3f-629e-a248-b47e-1138af43beb5"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -119,153 +131,168 @@ Cell[BoxData[
     RowBox[{"[", "1", "]"}], "]"}], "[", 
    RowBox[{"[", 
     RowBox[{"\"\<Metadata\>\"", ",", " ", "\"\<Stream\>\""}], "]"}], 
-   "]"}]}]], "Input",
+   "]"}]}]], "Code",
  CellLabel->"In[8]:=",ExpressionUUID->"9269f75a-6f66-43c7-98b9-47db3dc20cc5"],
 
-Cell[BoxData["8551385296"], "Output",
- CellLabel->"Out[8]=",ExpressionUUID->"745f6bf9-e10a-4b4e-b2ec-53d222b50820"]
+Cell[BoxData["175620480"], "Output",
+ CellLabel->"Out[8]=",ExpressionUUID->"f8ed4bc0-c9ad-284a-aaef-88af0e66972c"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"traceHeader1", " ", "=", " ", 
-  RowBox[{"WLJS`GeologyIO`SEGY`Private`readSegyTraceHeader", "[", 
-   RowBox[{"stream", ",", " ", "1", ",", " ", 
-    RowBox[{"240", "+", "1200"}]}], "]"}]}]], "Input",
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"traceHeader1", " ", "=", " ", 
+   RowBox[{"WLJS`GeologyIO`SEGY`Private`readSegyTraceHeader", "[", 
+    RowBox[{"stream", ",", " ", "1", ",", " ", 
+     RowBox[{"240", "+", "1200"}]}], "]"}]}], "]"}]], "Code",
  CellLabel->"In[9]:=",ExpressionUUID->"4c0bcebf-414e-48b5-9de8-c6168755ae5e"],
 
 Cell[BoxData[
- InterpretationBox[
-  RowBox[{
-   TagBox["ByteArray",
-    "SummaryHead"], "[", 
-   DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = "Ready"}, 
-    
-    TemplateBox[{
-      PaneSelectorBox[{False -> GridBox[{{
-            GridBox[{{
-               TagBox["\"240 bytes\"", "SummaryItem"]}}, 
-             GridBoxAlignment -> {
-              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
-             False, GridBoxItemSize -> {
-              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
-              BaseStyle -> {
-              ShowStringCharacters -> False, NumberMarks -> False, 
-               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
-          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
-          AutoDelete -> False, 
-          GridBoxItemSize -> {
-           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-          BaselinePosition -> {1, 1}], True -> GridBox[{{
-            GridBox[{{
-               TagBox["\"240 bytes\"", "SummaryItem"]}}, 
-             GridBoxAlignment -> {
-              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
-             False, GridBoxItemSize -> {
-              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
-              BaseStyle -> {
-              ShowStringCharacters -> False, NumberMarks -> False, 
-               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
-          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
-          AutoDelete -> False, 
-          GridBoxItemSize -> {
-           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
-          BaselinePosition -> {1, 1}]}, 
-       Dynamic[Typeset`open$$], ImageSize -> Automatic]},
-     "SummaryPanel"],
-    DynamicModuleValues:>{}], "]"}],
-  ByteArray[{0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 72, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 
-   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}],
-  Editable->False,
-  SelectWithContents->True,
-  Selectable->False]], "Output",
- CellLabel->"Out[9]=",ExpressionUUID->"6abbee09-5d8d-4edb-9ec6-bd2c5337ddc4"]
+ RowBox[{"{", 
+  RowBox[{"0.0000496`", ",", 
+   InterpretationBox[
+    RowBox[{
+     TagBox["ByteArray",
+      "SummaryHead"], "[", 
+     DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+      "Ready"}, 
+      TemplateBox[{
+        PaneSelectorBox[{False -> GridBox[{{
+              GridBox[{{
+                 TagBox["\"240 bytes\"", "SummaryItem"]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+            AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}], True -> GridBox[{{
+              GridBox[{{
+                 TagBox["\"240 bytes\"", "SummaryItem"]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+            AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}]}, 
+         Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+       "SummaryPanel"],
+      DynamicModuleValues:>{}], "]"}],
+    ByteArray[{0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 72, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+     0, 0, 0}],
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False]}], "}"}]], "Output",
+ CellLabel->"Out[9]=",ExpressionUUID->"c5492f66-01b0-f441-b33c-3f6289c7598a"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"ImportByteArray", "[", 
+ RowBox[{"RepeatedTiming", "[", 
   RowBox[{
-   RowBox[{"traceHeader1", "[", 
-    RowBox[{"[", " ", 
-     RowBox[{";;", " ", "28"}], "]"}], "]"}], ",", " ", "\"\<Integer32\>\"", ",",
-    " ", "\[IndentingNewLine]", 
-   RowBox[{"ByteOrdering", "->", "1"}]}], "\[IndentingNewLine]", 
-  "]"}]], "Input",
- CellLabel->"In[10]:=",ExpressionUUID->"a566dd61-2525-4b59-a421-a8857078d817"],
+   RowBox[{"Table", "[", "\n", "\t", 
+    RowBox[{
+     RowBox[{
+     "WLJS`GeologyIO`SEGY`Private`byteArrayToSegyTraceHeader", "[", "\n", 
+      "\t\t", 
+      RowBox[{"WLJS`GeologyIO`SEGY`Private`readSegyTraceHeader", "[", 
+       RowBox[{"stream", ",", " ", "i", ",", " ", 
+        RowBox[{"240", "+", "1200"}]}], "]"}], "\n", "\t", "]"}], ",", " ", 
+     "\n", "\t", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "1", ",", " ", 
+       RowBox[{
+        RowBox[{"data", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"\"\<Metadata\>\"", ",", " ", "\"\<NTraces\>\""}], "]"}], 
+        "]"}]}], "}"}]}], "\n", "]"}], ";"}], "]"}]], "Code",
+ CellLabel->"In[10]:=",ExpressionUUID->"dd7d60b9-58b1-0144-a5d1-9f6200f1c014"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"2", ",", "2", ",", "1", ",", "72", ",", "0", ",", "0", ",", "2"}], 
+  RowBox[{"0.00085024091796875`", ",", "Null"}], "}"}]], "Output",
+ CellLabel->"Out[10]=",ExpressionUUID->"d97d981d-358d-7549-bd21-55ab76421045"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RepeatedTiming", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", "\n", "\t", 
+    RowBox[{
+     RowBox[{"WLJS`GeologyIO`Numbers`IBM32ByteArrayToReal", "[", "\n", "\t\t", 
+      RowBox[{"WLJS`GeologyIO`SEGY`Private`readSegyTraceData", "[", 
+       RowBox[{"stream", ",", " ", "i", ",", " ", 
+        RowBox[{"240", "+", "1200"}]}], "]"}], "\n", "\t", "]"}], ",", " ", 
+     "\n", "\t", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "1", ",", " ", 
+       RowBox[{
+        RowBox[{"data", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{"\"\<Metadata\>\"", ",", " ", "\"\<NTraces\>\""}], "]"}], 
+        "]"}]}], "}"}]}], "\n", "]"}], ";"}], "]"}]], "Code",
+ CellLabel->"In[11]:=",ExpressionUUID->"d510cffa-9767-ce48-b79c-7b726c61ef17"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00303840859375`", ",", "Null"}], "}"}]], "Output",
+ CellLabel->"Out[11]=",ExpressionUUID->"3299dd9a-5cbb-5746-8c2f-2da8de8332ea"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RepeatedTiming", "[", "\n", "\t", 
+  RowBox[{"WLJS`GeologyIO`EBCDIC`EBCDICToString", "[", "\n", "\t\t", 
+   RowBox[{
+   "WLJS`GeologyIO`SEGY`Private`readSegyTextHeader", "[", "stream", "]"}], 
+   "\n", "\t", "]"}], "\n", "]"}]], "Code",
+ CellLabel->"In[12]:=",ExpressionUUID->"f4535958-55cd-e546-b326-8db85584888a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.00026516962890625`", ",", 
+   RowBox[{"EBCDICToString", "[", 
+    RowBox[{"LibraryFunctionError", "[", 
+     RowBox[{"\<\"LIBRARY_FUNCTION_ERROR\"\>", ",", "6"}], "]"}], "]"}]}], 
   "}"}]], "Output",
- CellLabel->"Out[10]=",ExpressionUUID->"5d37d19e-2803-47da-b540-bcc477adba09"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"ImportByteArray", "[", 
-  RowBox[{
-   RowBox[{"traceHeader1", "[", 
-    RowBox[{"[", " ", 
-     RowBox[{";;", " ", "28"}], "]"}], "]"}], ",", 
-   " ", "\"\<UnsignedInteger64\>\"", ",", " ", "\[IndentingNewLine]", 
-   RowBox[{"ByteOrdering", "->", "1"}]}], "\[IndentingNewLine]", 
-  "]"}]], "Input",
- CellLabel->"In[18]:=",ExpressionUUID->"7b25e7b8-2d84-4107-a2ed-d239e3a68175"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"8589934594", ",", "4294967368", ",", "0"}], "}"}]], "Output",
- CellLabel->"Out[18]=",ExpressionUUID->"b95e3e40-f7d4-4187-b3ea-a4412b64b32c"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Normal", "[", 
-  RowBox[{"traceHeader1", "[", 
-   RowBox[{"[", 
-    RowBox[{"1", ";;", "4"}], "]"}], "]"}], "]"}]], "Input",
- CellLabel->"In[20]:=",ExpressionUUID->"120fa6bb-d264-4a6a-8b80-7d2aa2d26db4"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"0", ",", "0", ",", "0", ",", "2"}], "}"}]], "Output",
- CellLabel->"Out[20]=",ExpressionUUID->"350c9e9c-aa25-4360-a701-b77a86f8f67e"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Normal", "@", 
-  RowBox[{"ExportByteArray", "[", 
-   RowBox[{"2103919240", ",", " ", "\"\<UnsignedInteger32\>\""}], 
-   "]"}]}]], "Input",
- CellLabel->"In[9]:=",ExpressionUUID->"79cd70cc-d9e7-4228-9cda-62fb5b21f560"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"136", ",", "66", ",", "103", ",", "125"}], "}"}]], "Output",
- CellLabel->"Out[9]=",ExpressionUUID->"f7c964ea-04cf-449b-8cf4-005da149ebc1"]
+ CellLabel->"Out[12]=",ExpressionUUID->"d5c58f5c-148c-9e45-9839-cd15b1c6e51e"]
 }, Open  ]]
 },
-WindowSize->{808, 681},
-WindowMargins->{{Automatic, 91}, {32, Automatic}},
+WindowSize->{808.5, 681},
+WindowMargins->{{Automatic, 328.5}, {114.75, Automatic}},
 TrackCellChangeTimes->False,
-FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"73838f36-9b3a-d94b-a5c5-9618dae1aa86"
 ]
@@ -280,42 +307,42 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[1460, 33, 425, 10, 107, "Code",ExpressionUUID->"4d27b101-0669-2f4a-9ae7-550b4bd144cc"],
+Cell[1460, 33, 425, 10, 102, "Code",ExpressionUUID->"4d27b101-0669-2f4a-9ae7-550b4bd144cc"],
 Cell[CellGroupData[{
-Cell[1910, 47, 274, 6, 51, "Code",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
-Cell[2187, 55, 162, 3, 33, "Output",ExpressionUUID->"60604474-aa8c-4319-9ba2-94f5405f4707"]
+Cell[1910, 47, 349, 8, 50, "Code",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
+Cell[2262, 57, 164, 3, 32, "Output",ExpressionUUID->"dbd9ed2e-8ec7-754e-b715-69f8ca263087"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2386, 63, 283, 7, 51, "Code",ExpressionUUID->"1b3e39aa-d996-284e-8ad1-2c454f5ecd87"],
-Cell[2672, 72, 1093, 16, 74, "Output",ExpressionUUID->"592288d2-337f-48b1-82e1-11ac5df8e188"]
+Cell[2463, 65, 179, 3, 50, "Code",ExpressionUUID->"96a7f991-c677-7942-af5e-36bd9df1972c"],
+Cell[2645, 70, 112, 1, 32, "Output",ExpressionUUID->"c341587d-9c04-3c4f-8cb3-b364bc7ae0b3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3802, 93, 225, 5, 29, "Input",ExpressionUUID->"957d49c4-ec46-46ac-81da-67cf7baa2d48"],
-Cell[4030, 100, 409, 9, 53, "Output",ExpressionUUID->"41b434b6-7faf-4ceb-9c73-3cbd1d4e3935"]
+Cell[2794, 76, 283, 7, 50, "Code",ExpressionUUID->"1b3e39aa-d996-284e-8ad1-2c454f5ecd87"],
+Cell[3080, 85, 975, 14, 70, "Output",ExpressionUUID->"305f5eb2-d6d7-cd44-a53f-c751cfb7d701"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4476, 114, 313, 8, 29, "Input",ExpressionUUID->"9269f75a-6f66-43c7-98b9-47db3dc20cc5"],
-Cell[4792, 124, 115, 1, 33, "Output",ExpressionUUID->"745f6bf9-e10a-4b4e-b2ec-53d222b50820"]
+Cell[4092, 104, 224, 5, 50, "Code",ExpressionUUID->"957d49c4-ec46-46ac-81da-67cf7baa2d48"],
+Cell[4319, 111, 431, 10, 51, "Output",ExpressionUUID->"5e47cd3f-629e-a248-b47e-1138af43beb5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4944, 130, 301, 5, 29, "Input",ExpressionUUID->"4c0bcebf-414e-48b5-9de8-c6168755ae5e"],
-Cell[5248, 137, 2888, 55, 45, "Output",ExpressionUUID->"6abbee09-5d8d-4edb-9ec6-bd2c5337ddc4"]
+Cell[4787, 126, 312, 8, 50, "Code",ExpressionUUID->"9269f75a-6f66-43c7-98b9-47db3dc20cc5"],
+Cell[5102, 136, 114, 1, 32, "Output",ExpressionUUID->"f8ed4bc0-c9ad-284a-aaef-88af0e66972c"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8173, 197, 393, 9, 70, "Input",ExpressionUUID->"a566dd61-2525-4b59-a421-a8857078d817"],
-Cell[8569, 208, 206, 4, 33, "Output",ExpressionUUID->"5d37d19e-2803-47da-b540-bcc477adba09"]
+Cell[5253, 142, 344, 6, 50, "Code",ExpressionUUID->"4c0bcebf-414e-48b5-9de8-c6168755ae5e"],
+Cell[5600, 150, 3090, 60, 46, "Output",ExpressionUUID->"c5492f66-01b0-f441-b33c-3f6289c7598a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8812, 217, 401, 9, 70, "Input",ExpressionUUID->"7b25e7b8-2d84-4107-a2ed-d239e3a68175"],
-Cell[9216, 228, 180, 3, 33, "Output",ExpressionUUID->"b95e3e40-f7d4-4187-b3ea-a4412b64b32c"]
+Cell[8727, 215, 825, 20, 137, "Code",ExpressionUUID->"dd7d60b9-58b1-0144-a5d1-9f6200f1c014"],
+Cell[9555, 237, 174, 3, 32, "Output",ExpressionUUID->"d97d981d-358d-7549-bd21-55ab76421045"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9433, 236, 227, 5, 29, "Input",ExpressionUUID->"120fa6bb-d264-4a6a-8b80-7d2aa2d26db4"],
-Cell[9663, 243, 172, 3, 33, "Output",ExpressionUUID->"350c9e9c-aa25-4360-a701-b77a86f8f67e"]
+Cell[9766, 245, 799, 18, 137, "Code",ExpressionUUID->"d510cffa-9767-ce48-b79c-7b726c61ef17"],
+Cell[10568, 265, 171, 3, 32, "Output",ExpressionUUID->"3299dd9a-5cbb-5746-8c2f-2da8de8332ea"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9872, 251, 240, 5, 29, "Input",ExpressionUUID->"79cd70cc-d9e7-4228-9cda-62fb5b21f560"],
-Cell[10115, 258, 178, 3, 33, "Output",ExpressionUUID->"f7c964ea-04cf-449b-8cf4-005da149ebc1"]
+Cell[10776, 273, 339, 6, 120, "Code",ExpressionUUID->"f4535958-55cd-e546-b326-8db85584888a"],
+Cell[11118, 281, 320, 7, 32, "Output",ExpressionUUID->"d5c58f5c-148c-9e45-9839-cd15b1c6e51e"]
 }, Open  ]]
 }
 ]

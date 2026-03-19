@@ -24,127 +24,131 @@ DLLEXPORT int readSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgume
 
 DLLEXPORT int readSegyTraceData(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
+DLLEXPORT int byteArrayToSegyBinaryHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
+
 DLLEXPORT int byteArrayToSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
 #pragma pack(push, 1)
 typedef struct {
-    //   0
-    int32_t  TraceSequenceLine;           // 0-3
-    int32_t  TraceSequenceFile;           // 4-7
-    int32_t  FieldRecord;                 // 8-11
-    int32_t  TraceNumber;                 // 12-15
-    int32_t  EnergySourcePoint;           // 16-19
-    int32_t  cdp;                         // 20-23
-    int32_t  cdpTrace;                    // 24-27
+    int32_t  jobId;                // 3201
+    int32_t  lineNumber;           // 3205
+    int32_t  reelNumber;           // 3209
+    uint16_t tracesPerEnsemble;    // 3213
+    uint16_t auxTracesPerEnsemble; // 3215
+    uint16_t sampleInterval;       // 3217
+    uint16_t sampleIntervalOrig;   // 3219
+    uint16_t samplesPerTrace;      // 3221
+    uint16_t samplesPerTraceOrig;  // 3223
+    uint16_t formatCode;           // 3225
+    uint16_t ensembleFold;         // 3227
+    uint16_t traceSorting;         // 3229
+    uint16_t verticalSumCode;      // 3231
+    uint16_t sweepFreqStart;       // 3233
+    uint16_t sweepFreqEnd;         // 3235
+    uint16_t sweepLength;          // 3237
+    uint16_t sweepTypeCode;        // 3239
+    uint16_t sweepChannel;         // 3241
+    uint16_t sweepTaperStart;      // 3243
+    uint16_t sweepTaperEnd;        // 3245
+    uint16_t taperType;            // 3247
+    uint16_t correlatedFlag;       // 3249
+    uint16_t binaryGainRecovery;   // 3251
+    uint16_t amplitudeRecovery;    // 3253
+    uint16_t measurementSystem;    // 3255
+    uint16_t impulsePolarity;      // 3257
+    uint16_t vibratoryPolarity;    // 3259
+    uint8_t  unassigned1[240];     // 3261-3500
+    uint16_t segyVersion;          // 3501
+    uint16_t fixedLengthFlag;      // 3503
+    uint16_t extTextHeadersNum;    // 3505
+    uint8_t  unassigned2[94];      // 3507-3600
+} SEGYBinaryHeader;
+#pragma pack(pop)
 
-    //   28
-    int16_t  TraceIdenitifactionCode;     // 28-29
-    int16_t  NSummedTraces;               // 30-31
-    int16_t  NStackedTraces;              // 32-33
-    int16_t  DataUse;                     // 34-35
-
-    //   36
-    int32_t  offset;                      // 36-39
-    int32_t  ReceiverGroupElevation;      // 40-43
-    int32_t  SourceSurfaceElevation;      // 44-47
-    int32_t  SourceDepth;                 // 48-51
-    int32_t  ReceiverDatumElevation;      // 52-55
-    int32_t  SourceDatumElevation;        // 56-59
-    int32_t  SourceWaterDepth;            // 60-63
-    int32_t  GroupWaterDepth;             // 64-67
-
-    //   68
-    int16_t  ElevationScalar;             // 68-69
-    int16_t  SourceGroupScalar;           // 70-71
-    int32_t  SourceX;                     // 72-75
-    int32_t  SourceY;                     // 76-79
-    int32_t  GroupX;                      // 80-83
-    int32_t  GroupY;                      // 84-87
-
-    //   88
-    int16_t  CoordinateUnits;             // 88-89
-    int16_t  WeatheringVelocity;          // 90-91
-    int16_t  SubWeatheringVelocity;       // 92-93
-    int16_t  SourceUpholeTime;            // 94-95
-    int16_t  GroupUpholeTime;             // 96-97
-    int16_t  SourceStaticCorrection;      // 98-99
-    int16_t  GroupStaticCorrection;       // 100-101
-    int16_t  TotalStaticApplied;          // 102-103
-
-    //   104
-    int16_t  LagTimeA;                    // 104-105
-    int16_t  LagTimeB;                    // 106-107
-    int16_t  DelayRecordingTime;          // 108-109
-    int16_t  MuteTimeStart;               // 110-111
-    int16_t  MuteTimeEND;                 // 112-113
-    uint16_t ns;                          // 114-115
-    uint16_t dt;                          // 116-117
-
-    //   118
-    int16_t  GainType;                    // 118-119
-    int16_t  InstrumentGainConstant;      // 120-121
-    int16_t  InstrumentInitialGain;       // 122-123
-    int16_t  Correlated;                  // 124-125
-    int16_t  SweepFrequenceStart;         // 126-127
-    int16_t  SweepFrequenceEnd;           // 128-129
-    int16_t  SweepLength;                 // 130-131
-    int16_t  SweepType;                   // 132-133
-    int16_t  SweepTraceTaperLengthStart;  // 134-135
-    int16_t  SweepTraceTaperLengthEnd;    // 136-137
-    int16_t  TaperType;                   // 138-139
-
-    //   140
-    int16_t  AliasFilterFrequency;        // 140-141
-    int16_t  AliasFilterSlope;            // 142-143
-    int16_t  NotchFilterFrequency;        // 144-145
-    int16_t  NotchFilterSlope;            // 146-147
-    int16_t  LowCutFrequency;             // 148-149
-    int16_t  HighCutFrequency;            // 150-151
-    int16_t  LowCutSlope;                 // 152-153
-    int16_t  HighCutSlope;                // 154-155
-
-    //   156
-    int16_t  YearDataRecorded;            // 156-157
-    int16_t  DayOfYear;                   // 158-159
-    int16_t  HourOfDay;                   // 160-161
-    int16_t  MinuteOfHour;                // 162-163
-    int16_t  SecondOfMinute;              // 164-165
-    int16_t  TimeBaseCode;                // 166-167
-    int16_t  TraceWeightningFactor;       // 168-169
-    int16_t  GeophoneGroupNumberRoll1;    // 170-171
-    int16_t  GeophoneGroupNumberFirstTraceOrigField; // 172-173
-    int16_t  GeophoneGroupNumberLastTraceOrigField;  // 174-175
-    int16_t  GapSize;                     // 176-177
-    int16_t  OverTravel;                  // 178-179
-
-    //   180
-    int32_t  cdpX;                        // 180-183
-    int32_t  cdpY;                        // 184-187
-    int32_t  Inline3D;                    // 188-191
-    int32_t  Crossline3D;                 // 192-195
-    int32_t  ShotPoint;                   // 196-199
-    int16_t  ShotPointScalar;             // 200-201
-    int16_t  TraceValueMeasurementUnit;   // 202-203
-
-    //   204
-    int32_t  TransductionConstantMantissa; // 204-207
-    int16_t  TransductionConstantPower;    // 208-209
-    int16_t  TransductionUnit;             // 210-211
-    int16_t  TraceIdentifier;              // 212-213
-    int16_t  ScalarTraceHeader;            // 214-215
-    int16_t  SourceType;                   // 216-217
-
-    //   218
-    int32_t  SourceEnergyDirectionMantissa; // 218-221
-    int16_t  SourceEnergyDirectionExponent; // 222-223
-    int32_t  SourceMeasurementMantissa;     // 224-227
-    int16_t  SourceMeasurementExponent;     // 228-229
-    int16_t  SourceMeasurementUnit;         // 230-231
-
-    //   232
-    int32_t  UnassignedInt1;                // 232-235
-    int32_t  UnassignedInt2;                // 236-239
-} TraceHeader;
+#pragma pack(push, 1)
+typedef struct {
+    int32_t tracl;    // 1-4
+    int32_t tracr;    // 5-8
+    int32_t fldr;     // 9-12
+    int32_t tracf;    // 13-16
+    int32_t ep;       // 17-20
+    int32_t cdp;      // 21-24
+    int32_t cdpt;     // 25-28
+    int16_t trid;     // 29-30
+    int16_t nvs;      // 31-32
+    int16_t nhs;      // 33-34
+    int16_t duse;     // 35-36
+    int32_t offset;   // 37-40
+    int32_t gelev;    // 41-44
+    int32_t selev;    // 45-48
+    int32_t sdepth;   // 49-52
+    int32_t gdel;     // 53-56
+    int32_t sdel;     // 57-60
+    int32_t swdep;    // 61-64
+    int32_t gwdep;    // 65-68
+    int16_t scalel;   // 69-70
+    int16_t scalco;   // 71-72
+    int32_t sx;       // 73-76
+    int32_t sy;       // 77-80
+    int32_t gx;       // 81-84
+    int32_t gy;       // 85-88
+    int16_t counit;   // 89-90
+    int16_t wevel;    // 91-92
+    int16_t swevel;   // 93-94
+    int16_t sut;      // 95-96
+    int16_t gut;      // 97-98
+    int16_t sstat;    // 99-100
+    int16_t gstat;    // 101-102
+    int16_t tstat;    // 103-104
+    int16_t laga;     // 105-106
+    int16_t lagb;     // 107-108
+    int16_t delrt;    // 109-110
+    int16_t muts;     // 111-112
+    int16_t mute;     // 113-114
+    uint16_t ns;      // 115-116
+    uint16_t dt;      // 117-118
+    int16_t gain;     // 119-120
+    int16_t igain;    // 121-122
+    int16_t gaing;    // 123-124
+    int16_t corr;     // 125-126
+    int16_t sfs;      // 127-128
+    int16_t sfe;      // 129-130
+    int16_t slen;     // 131-132
+    int16_t styp;     // 133-134
+    int16_t stas;     // 135-136
+    int16_t stae;     // 137-138
+    int16_t tatyp;    // 139-140
+    int16_t afilf;    // 141-142
+    int16_t afils;    // 143-144
+    int16_t nofilf;   // 145-146
+    int16_t nofils;   // 147-148
+    int16_t lcf;      // 149-150
+    int16_t hcf;      // 151-152
+    int16_t lcs;      // 153-154
+    int16_t hcs;      // 155-156
+    int16_t year;     // 157-158
+    int16_t day;      // 159-160
+    int16_t hour;     // 161-162
+    int16_t minute;   // 163-164
+    int16_t sec;      // 165-166
+    int16_t tny;      // 167-168
+    int16_t twt;      // 169-170
+    int16_t geono;    // 171-172
+    int16_t grnors;   // 173-174
+    int16_t grnofr;   // 175-176
+    int16_t grnols;   // 177-178
+    int16_t gaps;     // 179-180
+    int16_t otrav;    // 181-182
+    int32_t cdpx;     // 181-184
+    int32_t cdpy;     // 185-188
+    int32_t iline;    // 189-192
+    int32_t xline;    // 193-196
+    int32_t shpoint;  // 197-200
+    int16_t shpscal;  // 201-202
+    int16_t tvalunit; // 203-204
+    int32_t transc;   // 205-208
+    uint8_t rest[32]; // 209-240
+} SEGYTraceHeader;
 #pragma pack(pop)
 
 #endif

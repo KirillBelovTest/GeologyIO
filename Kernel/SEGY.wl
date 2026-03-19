@@ -62,18 +62,13 @@ Module[{
     textHeader = EBCDICToString[textHeaderByteArray];
 
     binaryHeaderByteArray = readSegyBinaryHeader[stream];
-    binaryHeader = getBinaryHeader[binaryHeaderByteArray];
+    binaryHeader = byteArrayToSegyBinaryHeader[binaryHeaderByteArray];
 
-    numberOfSamplesForReel = binaryHeader["NumberOfSamplesForReel"];
-    samplesFormatCode = binaryHeader["SamplesFormatCode"];
+    numberOfSamplesForReel = binaryHeader[[8]];
+    samplesFormatCode = binaryHeader[[10]];
     traceByteCount = numberOfSamplesForReel * $sampleSize[samplesFormatCode] + 240;
 
-    numberDataTraces =
-    If[IntegerQ[OptionValue["NumberDataTraces"]] && Positive[OptionValue["NumberDataTraces"]],
-        OptionValue["NumberDataTraces"],
-    (*Else*)
-        (FileByteCount[file] - 3600) / traceByteCount
-    ];
+    numberDataTraces = (FileByteCount[file] - 3600) / traceByteCount;
 
     metadata = <|
         "File" -> AbsoluteFileName[file],
@@ -105,52 +100,47 @@ Module[{
 (*Internal*)
 
 
-getBinaryHeader[binaryHeaderByteArray_ByteArray] :=
-    Association @
-    Map[#Name -> ImportByteArray[binaryHeaderByteArray[[#Position]], #Type, ByteOrdering -> 1][[1]]&] @
-    $binaryHeaderSpec;
-
-
 $sampleSize = <|
     1 -> 4
 |>;
 
 
-$binaryHeaderSpec = {
-    <|"Name" -> "JobID",                        "Position" -> 01 ;; 04, "Type" -> "UnsignedInteger32"|>,
-    <|"Name" -> "LineNumber",                   "Position" -> 05 ;; 08, "Type" -> "UnsignedInteger32"|>,
-    <|"Name" -> "ReelNumber",                   "Position" -> 09 ;; 12, "Type" -> "UnsignedInteger32"|>,
-    <|"Name" -> "NumberDataTraces",             "Position" -> 13 ;; 14, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "NumberAuxTraces",              "Position" -> 15 ;; 16, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "IntervalReelRecord",           "Position" -> 17 ;; 18, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "IntervalFieldRecord",          "Position" -> 19 ;; 20, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "NumberOfSamplesForReel",       "Position" -> 21 ;; 22, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "NumberOfSamplesForField",      "Position" -> 23 ;; 24, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "SamplesFormatCode",            "Position" -> 25 ;; 26, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "CDPFold",                      "Position" -> 27 ;; 28, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "TraceSortingCode",             "Position" -> 29 ;; 30, "Type" -> "Integer16"        |>,
-    <|"Name" -> "VerticalSumCode",              "Position" -> 31 ;; 32, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "SweepFrequencyAtStart",        "Position" -> 33 ;; 34, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "SweepFrequencyAtEnd",          "Position" -> 35 ;; 36, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "SweepLength",                  "Position" -> 37 ;; 38, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "SweepTypeCode",                "Position" -> 39 ;; 40, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "TraceNumberOfSweepChannel",    "Position" -> 41 ;; 42, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "SweepTraceTaperLengthAtStart", "Position" -> 43 ;; 44, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "SweepTraceTaperLength",        "Position" -> 45 ;; 46, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "TaperType",                    "Position" -> 47 ;; 48, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "CorrelatedDataTraces",         "Position" -> 49 ;; 50, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "BinaryGainRecovered",          "Position" -> 51 ;; 52, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "AmplitudeRecoveryMethod",      "Position" -> 53 ;; 54, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "MeasurementSystem",            "Position" -> 55 ;; 56, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "ImpulseSignal",                "Position" -> 57 ;; 58, "Type" -> "UnsignedInteger16"|>,
-    <|"Name" -> "VibratoryPolarityCode",        "Position" -> 59 ;; 60, "Type" -> "UnsignedInteger16"|>
-};
+$binaryHeaderKeys = <|
+    "jobId" -> 1, "lineNumber" -> 2, "reelNumber" -> 3, "tracesPerEnsemble" -> 4,
+    "auxTracesPerEnsemble" -> 5, "sampleInterval" -> 6, "sampleIntervalOrig" -> 7,
+    "samplesPerTrace" -> 8, "samplesPerTraceOrig" -> 9, "formatCode" -> 10,
+    "ensembleFold" -> 11, "traceSorting" -> 12, "verticalSumCode" -> 13,
+    "sweepFreqStart" -> 14, "sweepFreqEnd" -> 15, "sweepLength" -> 16,
+    "sweepTypeCode" -> 17, "sweepChannel" -> 18, "sweepTaperStart" -> 19,
+    "sweepTaperEnd" -> 20, "taperType" -> 21, "correlatedFlag" -> 22,
+    "binaryGainRecovery" -> 23, "amplitudeRecovery" -> 24, "measurementSystem" -> 25,
+    "impulsePolarity" -> 26, "vibratoryPolarity" -> 27, "segyVersion" -> 28,
+    "fixedLengthFlag" -> 29, "extTextHeadersNum" -> 30
+|>;
 
 
-getTraceData[byteArray_ByteArray, samplesFormatCode_Integer] :=
-Switch[samplesFormatCode,
-    1, IBM32ByteArrayToReal[byteArray]
-];
+$traceHeaderKeys = <|
+    "tracl" -> 1, "tracr" -> 2, "fldr" -> 3, "tracf" -> 4, "ep" -> 5,
+    "cdp" -> 6, "cdpt" -> 7, "trid" -> 8, "nvs" -> 9, "nhs" -> 10,
+    "duse" -> 11, "offset" -> 12, "gelev" -> 13, "selev" -> 14, "sdepth" -> 15,
+    "gdel" -> 16, "sdel" -> 17, "swdep" -> 18, "gwdep" -> 19, "scalel" -> 20,
+    "scalco" -> 21, "sx" -> 22, "sy" -> 23, "gx" -> 24, "gy" -> 25,
+    "counit" -> 26, "wevel" -> 27, "swevel" -> 28, "sut" -> 29, "gut" -> 30,
+    "sstat" -> 31, "gstat" -> 32, "tstat" -> 33, "laga" -> 34, "lagb" -> 35,
+    "delrt" -> 36, "muts" -> 37, "mute" -> 38, "ns" -> 39, "dt" -> 40,
+    "gain" -> 41, "igain" -> 42, "gaing" -> 43, "corr" -> 44, "sfs" -> 45,
+    "sfe" -> 46, "slen" -> 47, "styp" -> 48, "stas" -> 49, "stae" -> 50,
+    "tatyp" -> 51, "afilf" -> 52, "afils" -> 53, "nofilf" -> 54, "nofils" -> 55,
+    "lcf" -> 56, "hcf" -> 57, "lcs" -> 58, "hcs" -> 59, "year" -> 60,
+    "day" -> 61, "hour" -> 62, "minute" -> 63, "sec" -> 64, "tny" -> 65,
+    "twt" -> 66, "geono" -> 67, "grnors" -> 68, "grnofr" -> 69, "grnols" -> 70,
+    "gaps" -> 71, "otrav" -> 72, "cdpx" -> 73, "cdpy" -> 74, "iline" -> 75,
+    "xline" -> 76, "shpoint" -> 77, "shpscal" -> 78, "tvalunit" -> 79, "transc" -> 80
+|>;
+
+
+getTraceData[byteArray_ByteArray, 1] :=
+IBM32ByteArrayToReal[byteArray];
 
 
 $directory =
@@ -220,6 +210,14 @@ readSegyTraceData::usage =
 
 readSegyTraceData =
 LibraryFunctionLoad[$library, "readSegyTraceData", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
+
+
+byteArrayToSegyBinaryHeader::usage =
+"byteArrayToSegyBinaryHeader[byteArray]";
+
+
+byteArrayToSegyBinaryHeader =
+LibraryFunctionLoad[$library, "byteArrayToSegyBinaryHeader", {{LibraryDataType[ByteArray], "Shared"}}, {Integer, 1}];
 
 
 byteArrayToSegyTraceHeader::usage =
