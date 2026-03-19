@@ -23,10 +23,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[      1060,         20]
-NotebookDataLength[     13110,        278]
-NotebookOptionsPosition[     12981,        264]
-NotebookOutlinePosition[     13401,        281]
-CellTagsIndexPosition[     13358,        278]
+NotebookDataLength[     13114,        278]
+NotebookOptionsPosition[     12980,        264]
+NotebookOutlinePosition[     13405,        281]
+CellTagsIndexPosition[     13362,        278]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -58,19 +58,19 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"data", " ", "=", " ", 
     RowBox[{"SEGYImport", "[", "path", "]"}]}], ";"}], "]"}]], "Code",
- CellLabel->"In[6]:=",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
+ CellLabel->"In[7]:=",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"1.892279`", ",", "Null"}], "}"}]], "Output",
- CellLabel->"Out[6]=",ExpressionUUID->"f4c3112d-8cf5-4c54-afcc-01a87fcb1387"]
+  RowBox[{"2.6182364`", ",", "Null"}], "}"}]], "Output",
+ CellLabel->"Out[7]=",ExpressionUUID->"6d079a81-2249-1749-8dd9-66c228cab263"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"data", "[", "\"\<TextHeader\>\"", "]"}]], "Code",
- CellLabel->"In[7]:=",ExpressionUUID->"f4535958-55cd-e546-b326-8db85584888a"],
+ CellLabel->"In[8]:=",ExpressionUUID->"f4535958-55cd-e546-b326-8db85584888a"],
 
 Cell[BoxData["\<\"C01 CLIENT NAME: GPN GEO                                    \
                     C02 OPERATOR NAME: GAZPROMNEFT NTC                        \
@@ -116,14 +116,14 @@ offset, byte 49-52: azimuth_inl,        C37 byte 181-184: CMP X-coordinat \
 number, byte 193-196: Crossline number                 C39                    \
                                                          C40                  \
                                                            \"\>"], "Output",
- CellLabel->"Out[7]=",ExpressionUUID->"e4bead31-f41f-4580-8af9-8c7229a3bc23"]
+ CellLabel->"Out[8]=",ExpressionUUID->"413e3b5f-ee9a-2941-bebe-462d39fb56a3"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"data", "[", "\"\<TraceData\>\"", "]"}]], "Code",
- CellLabel->"In[8]:=",ExpressionUUID->"1bc80b15-8459-d34f-8de8-c2db4b79a001"],
+ CellLabel->"In[9]:=",ExpressionUUID->"1bc80b15-8459-d34f-8de8-c2db4b79a001"],
 
 Cell[BoxData[
  TagBox[
@@ -234,12 +234,12 @@ Cell[BoxData[
              Or[$VersionNumber < 11.2, CurrentValue["RunningEvaluator"] =!= 
               "Local"], 
              Style["This object cannot be used as input.", "SummaryEmbed"], 
-             BoxForm`EmbedSummaryLabel[NumericArray, 415736224, 
+             BoxForm`EmbedSummaryLabel[NumericArray, 415736272, 
               Dynamic[Typeset`embedState$$], Automatic]], StandardForm]], 
           ButtonFunction :> 
           BoxForm`EmbedSummaryInterpretation[
-           "Choose", NumericArray, 415736224, 
-            11175210686229469495786836742745656643088261791348702601344, 
+           "Choose", NumericArray, 415736272, 
+            7590382012173362842517483329250387354388716629971607224864, 
             EvaluationBox[], 
             Dynamic[Typeset`embedState$$], StandardForm, 
             ElisionsDump`embedSummaryBoxes], DefaultBaseStyle -> 
@@ -255,17 +255,17 @@ Cell[BoxData[
    DisplayFunction->(#& ),
    InterpretationFunction->("NumericArray[<316872,164>, Real64]"& )],
   False,
-  BoxID -> 11175210686229469495786836742745656643088261791348702601344,
+  BoxID -> 7590382012173362842517483329250387354388716629971607224864,
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
- CellLabel->"Out[8]=",ExpressionUUID->"ceef24bd-0c8a-4f2a-8d3c-f4146e9546c7"]
+ CellLabel->"Out[9]=",ExpressionUUID->"0046f74b-1992-3344-8b9a-46c113fbd5cf"]
 }, Open  ]]
 },
 WindowSize->{1440, 781},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 TrackCellChangeTimes->False,
-FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"73838f36-9b3a-d94b-a5c5-9618dae1aa86"
 ]
@@ -280,18 +280,18 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[1460, 33, 708, 18, 126, "Code",ExpressionUUID->"4d27b101-0669-2f4a-9ae7-550b4bd144cc"],
+Cell[1460, 33, 708, 18, 120, "Code",ExpressionUUID->"4d27b101-0669-2f4a-9ae7-550b4bd144cc"],
 Cell[CellGroupData[{
-Cell[2193, 55, 241, 5, 51, "Code",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
-Cell[2437, 62, 162, 3, 33, "Output",ExpressionUUID->"f4c3112d-8cf5-4c54-afcc-01a87fcb1387"]
+Cell[2193, 55, 241, 5, 50, "Code",ExpressionUUID->"2942e309-8cd3-024a-ae0c-80c91640938a"],
+Cell[2437, 62, 163, 3, 32, "Output",ExpressionUUID->"6d079a81-2249-1749-8dd9-66c228cab263"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2636, 70, 151, 2, 51, "Code",ExpressionUUID->"f4535958-55cd-e546-b326-8db85584888a"],
-Cell[2790, 74, 3501, 44, 421, "Output",ExpressionUUID->"e4bead31-f41f-4580-8af9-8c7229a3bc23"]
+Cell[2637, 70, 151, 2, 50, "Code",ExpressionUUID->"f4535958-55cd-e546-b326-8db85584888a"],
+Cell[2791, 74, 3501, 44, 393, "Output",ExpressionUUID->"413e3b5f-ee9a-2941-bebe-462d39fb56a3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6328, 123, 150, 2, 51, "Code",ExpressionUUID->"1bc80b15-8459-d34f-8de8-c2db4b79a001"],
-Cell[6481, 127, 6484, 134, 80, "Output",ExpressionUUID->"ceef24bd-0c8a-4f2a-8d3c-f4146e9546c7"]
+Cell[6329, 123, 150, 2, 50, "Code",ExpressionUUID->"1bc80b15-8459-d34f-8de8-c2db4b79a001"],
+Cell[6482, 127, 6482, 134, 81, "Output",ExpressionUUID->"0046f74b-1992-3344-8b9a-46c113fbd5cf"]
 }, Open  ]]
 }
 ]
