@@ -34,6 +34,8 @@ DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument
 
 void segy_trace_header_byte_array_to_mint(uint8_t *input, mint *output);
 
+void segy_binary_header_byte_array_to_mint(uint8_t *byteArray, mint *data);
+
 #pragma pack(push, 1)
 typedef struct {
     int32_t  jobId;                // 3201

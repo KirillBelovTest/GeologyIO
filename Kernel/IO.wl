@@ -6,15 +6,7 @@ BeginPackage["WLJS`GeologyIO`IO`", {
 }];
 
 
-GeologyIOOpenFile::usage =
-"GeologyIOOpenFile[path] returns opened file.";
-
-
 Begin["`Private`"];
-
-
-GeologyIOOpenFile[path: _String | _File] :=
-openFile[AbsoluteFileName[path]];
 
 
 $directory =
@@ -56,6 +48,18 @@ Block[{$LibraryPath = $libraryDirectory}, FindLibrary["geologyio"]];
 
 openFile =
 LibraryFunctionLoad[$library, "openFile", {String}, Integer];
+
+
+readByteArray::usage =
+"readByteArray[stream, positions, counts, length] returns byte array.";
+
+
+readByteArray =
+LibraryFunctionLoad[$library, "readByteArray", {Integer, {Integer, 1}, {Integer, 1}, Integer}, LibraryDataType[ByteArray]];
+
+
+closeFile =
+LibraryFunctionLoad[$library, "closeFile", {Integer}, Integer];
 
 
 End[(*`Private`*)];

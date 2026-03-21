@@ -166,4 +166,4 @@ Compile[{{bytes, _Integer, 1}},
 End[]; (*`Private`s*)
 
 
-EndPackage[] (*WLJS`GeologyIO`Numbers`*)
+EndPackage[]; (*WLJS`GeologyIO`Numbers`*)

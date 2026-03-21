@@ -40,10 +40,6 @@ Module[{
     path = AbsoluteFileName[file],
     stream,
     fileSize,
-    textHeaderByteArray,
-    textHeader,
-    binaryHeaderByteArray,
-    binaryHeader,
     numberOfSamplesForReel,
     samplesFormatCode,
     traceSize,
@@ -51,31 +47,26 @@ Module[{
 },
     If[KeyExistsQ[$streams, path],
         stream = $streams[path],
-        stream = GeologyIOOpenFile[path]
+        stream = WLJS`GeologyIO`IO`Private`openFile[path]
     ];
 
     fileSize = FileByteCount[path];
 
-    textHeaderByteArray = readSegyTextHeader[stream];
-    textHeader = EBCDICToString[textHeaderByteArray];
+    numberOfSamplesForReelByteArray = WLJS`GeologyIO`IO`Private`readByteArray[stream, {3220}, {2}, 1];
+    numberOfSamplesForReel = ImportByteArray[numberOfSamplesForReelByteArray, "UnsignedInteger16", ByteOrdering -> 1][[1]];
 
-    binaryHeaderByteArray = readSegyBinaryHeader[stream];
-    binaryHeader = byteArrayToSegyBinaryHeader[binaryHeaderByteArray];
+    samplesFormatCodeByteArray = WLJS`GeologyIO`IO`Private`readByteArray[stream, {3224}, {2}, 1];
+    samplesFormatCode = ImportByteArray[samplesFormatCodeByteArray, "UnsignedInteger16", ByteOrdering -> 1][[1]];
 
-    numberOfSamplesForReel = binaryHeader[[8]];
-    samplesFormatCode = binaryHeader[[10]];
     traceSize = numberOfSamplesForReel * $sampleSize[samplesFormatCode] + $traceHeaderSize;
-
     numberDataTraces = (FileByteCount[file] - $fileHeaderSize) / traceSize;
 
     SEGYFile[<|
         "Path" -> path,
         "Stream" -> stream,
         "FileSize" -> fileSize,
-        "TextHeader" -> textHeader,
-        "BinaryHeader" -> binaryHeader,
-        "NumberDataTraces" -> numberDataTraces,
         "TraceSize" -> traceSize,
+        "NumberDataTraces" -> numberDataTraces,
         "SamplesFormatCode" -> samplesFormatCode,
         "NumberOfSamplesForReel" -> numberOfSamplesForReel
     |>]
@@ -84,6 +75,16 @@ Module[{
 
 SEGYFile[assoc_Association][key_String] :=
 assoc[[key]];
+
+
+SEGYFile[assoc_Association][positions: {__Integer}] :=
+With[{
+    stream = assoc["Stream"],
+    traceSize = assoc["TraceSize"],
+    numberOfSamplesForReel = assoc["NumberOfSamplesForReel"]
+},
+    getSegyTracesData[stream, positions, Length[positions], traceSize, 0, numberOfSamplesForReel]
+];
 
 
 SEGYImport[segyFile_SEGYFile] :=
