@@ -8,45 +8,86 @@ BeginPackage["WLJS`GeologyIO`SEGY`", {
 }];
 
 
-SEGYImport::usage =
-"SEGYImport[file] import seg-y file as SEGYData.";
-
-
-SEGYExport::usage =
-"SEGYExport[file, segy] export segy to target file.";
-
-
-SEGYData::usage =
-"SEGYData[data] seg-y in-memory representation.";
-
-
 SEGYOpen::usage =
 "SEGYOpen[data] open seg-y file for the editing.";
-
-
-SEGYClose::usage =
-"SEGYClose[data] close editable seg-y file.";
 
 
 SEGYFile::usage =
 "SEGYFile[data] editable seg-y file representation.";
 
 
+SEGYImport::usage =
+"SEGYImport[file] import seg-y file as SEGYData.";
+
+
+SEGYData::usage =
+"SEGYData[data] seg-y in-memory representation.";
+
+
+SEGYExport::usage =
+"SEGYExport[file, segy] export segy to target file.";
+
+
+SEGYClose::usage =
+"SEGYClose[data] close editable seg-y file.";
+
+
 Begin["`Private`"];
 
 
-(*Public*)
-
-
-Options[SEGYImport] = {
-    "NumberDataTraces" -> Automatic
-};
-
-
-SEGYImport[file: _String | _File, OptionsPattern[]] /;
-FileExistsQ[file] :=
+SEGYOpen[file_String?FileExistsQ] :=
 Module[{
-    fileName = AbsoluteFileName[file],
+    path = AbsoluteFileName[file],
+    stream,
+    fileSize,
+    textHeaderByteArray,
+    textHeader,
+    binaryHeaderByteArray,
+    binaryHeader,
+    numberOfSamplesForReel,
+    samplesFormatCode,
+    traceSize,
+    numberDataTraces
+},
+    If[KeyExistsQ[$streams, path],
+        stream = $streams[path],
+        stream = GeologyIOOpenFile[path]
+    ];
+
+    fileSize = FileByteCount[path];
+
+    textHeaderByteArray = readSegyTextHeader[stream];
+    textHeader = EBCDICToString[textHeaderByteArray];
+
+    binaryHeaderByteArray = readSegyBinaryHeader[stream];
+    binaryHeader = byteArrayToSegyBinaryHeader[binaryHeaderByteArray];
+
+    numberOfSamplesForReel = binaryHeader[[8]];
+    samplesFormatCode = binaryHeader[[10]];
+    traceSize = numberOfSamplesForReel * $sampleSize[samplesFormatCode] + $traceHeaderSize;
+
+    numberDataTraces = (FileByteCount[file] - $fileHeaderSize) / traceSize;
+
+    SEGYFile[<|
+        "Path" -> path,
+        "Stream" -> stream,
+        "FileSize" -> fileSize,
+        "TextHeader" -> textHeader,
+        "BinaryHeader" -> binaryHeader,
+        "NumberDataTraces" -> numberDataTraces,
+        "TraceSize" -> traceSize,
+        "SamplesFormatCode" -> samplesFormatCode,
+        "NumberOfSamplesForReel" -> numberOfSamplesForReel
+    |>]
+];
+
+
+SEGYFile[assoc_Association][key_String] :=
+assoc[[key]];
+
+
+SEGYImport[segyFile_SEGYFile] :=
+Module[{
     stream,
     textHeaderByteArray,
     textHeader,
@@ -60,39 +101,17 @@ Module[{
     traceHeaders,
     traceData
 },
-    If[KeyExistsQ[$streams, fileName],
-        stream = $streams[fileName],
-        stream = GeologyIOOpenFile[fileName]
-    ];
+    stream = segyFile["Stream"];
+    numberOfSamplesForReel = segyFile["NumberOfSamplesForReel"];
+    traceSize = segyFile["TraceSize"];
+    numberDataTraces = segyFile["NumberDataTraces"];
 
-    textHeaderByteArray = readSegyTextHeader[stream];
-    textHeader = EBCDICToString[textHeaderByteArray];
+    traceHeaders = getSegyTraceHeaders[stream, Range[numberDataTraces], numberDataTraces, traceSize];
+    traceData = getSegyTracesData[stream, Range[numberDataTraces], numberDataTraces, traceSize, 0, numberOfSamplesForReel];
 
-    binaryHeaderByteArray = readSegyBinaryHeader[stream];
-    binaryHeader = byteArrayToSegyBinaryHeader[binaryHeaderByteArray];
-
-    numberOfSamplesForReel = binaryHeader[[8]];
-    samplesFormatCode = binaryHeader[[10]];
-    traceByteCount = numberOfSamplesForReel * $sampleSize[samplesFormatCode] + 240;
-
-    numberDataTraces = (FileByteCount[file] - 3600) / traceByteCount;
-
-    metadata = <|
-        "File" -> AbsoluteFileName[file],
-        "Stream" -> stream,
-        "NTraces" -> numberDataTraces,
-        "NSamples" -> numberOfSamplesForReel,
-        "TraceByteCount" -> traceByteCount
-    |>;
-
-    traceHeaders = getSegyTraceHeaders[stream, Range[numberDataTraces], numberDataTraces, traceByteCount];
-    traceData = getSegyTracesData[stream, Range[numberDataTraces], numberDataTraces, traceByteCount, 0, numberOfSamplesForReel];
-
-    (*Return*)
     SEGYData[<|
-        "Metadata" -> metadata,
-        "TextHeader" -> textHeader,
-        "BinaryHeader" -> binaryHeader,
+        "TextHeader" -> segyFile["TextHeader"],
+        "BinaryHeader" -> segyFile["BinaryHeader"],
         "TraceHeaders" -> traceHeaders,
         "TraceData" -> traceData
     |>]
@@ -103,15 +122,18 @@ SEGYData[assoc_Association][part__] :=
 assoc[[part]];
 
 
-(*Internal*)
-
-
 If[!ValueQ[$streams], $streams = <||>];
 
 
 $sampleSize = <|
     1 -> 4
 |>;
+
+
+$traceHeaderSize = 240;
+
+
+$fileHeaderSize = 3600;
 
 
 $binaryHeaderKeys = <|
