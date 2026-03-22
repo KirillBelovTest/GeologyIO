@@ -46,6 +46,10 @@ $library =
 Block[{$LibraryPath = $libraryDirectory}, FindLibrary["geologyio"]];
 
 
+openFile::usage =
+"openFile[path] returns file stream pointer.";
+
+
 openFile =
 LibraryFunctionLoad[$library, "openFile", {String}, Integer];
 
@@ -56,6 +60,10 @@ readByteArray::usage =
 
 readByteArray =
 LibraryFunctionLoad[$library, "readByteArray", {Integer, {Integer, 1}, {Integer, 1}, Integer}, LibraryDataType[ByteArray]];
+
+
+closeFile::usage =
+"closeFile[stream] close file stream.";
 
 
 closeFile =

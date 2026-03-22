@@ -49,7 +49,7 @@ Module[{
         $streams[path] = WLJS`GeologyIO`IO`Private`openFile[path]
     ];
 
-    $stream = $streams[path];
+    stream = $streams[path];
 
     fileSize = FileByteCount[path];
 
@@ -103,15 +103,8 @@ segyFile[All, {0, assoc["NumberOfSamplesForReel"]}];
 SEGYImport[segyFile_SEGYFile] :=
 Module[{
     stream,
-    textHeaderByteArray,
-    textHeader,
-    binaryHeaderByteArray,
-    binaryHeader,
     numberOfSamplesForReel,
-    samplesFormatCode,
-    traceByteCount,
     numberDataTraces,
-    metadata,
     traceHeaders,
     traceData
 },
@@ -130,10 +123,6 @@ Module[{
         "TraceData" -> traceData
     |>]
 ];
-
-
-SEGYData[assoc_Association][part__] :=
-assoc[[part]];
 
 
 If[!ValueQ[$streams], $streams = <||>];
@@ -225,28 +214,28 @@ $library =
 Block[{$LibraryPath = $libraryDirectory}, FindLibrary["geologyio"]];
 
 
-readSegyTextHeader::usage =
-"readSegyTextHeader[file]";
+readSegyTextHeaderByteArray::usage =
+"readSegyTextHeaderByteArray[file]";
 
 
-readSegyTextHeader =
-LibraryFunctionLoad[$library, "readSegyTextHeader", {Integer}, LibraryDataType[ByteArray]];
+readSegyTextHeaderByteArray =
+LibraryFunctionLoad[$library, "readSegyTextHeaderByteArray", {Integer}, LibraryDataType[ByteArray]];
 
 
-readSegyBinaryHeader::usage =
-"readSegyBinaryHeader[file]";
+readSegyBinaryHeaderByteArray::usage =
+"readSegyBinaryHeaderByteArray[file]";
 
 
-readSegyBinaryHeader =
-LibraryFunctionLoad[$library, "readSegyBinaryHeader", {Integer}, LibraryDataType[ByteArray]];
+readSegyBinaryHeaderByteArray =
+LibraryFunctionLoad[$library, "readSegyBinaryHeaderByteArray", {Integer}, LibraryDataType[ByteArray]];
 
 
-readSegyTraceHeader::usage =
-"readSegyTraceHeader[file, traceNumber, traceSize]";
+readSegyTraceHeaderByteArray::usage =
+"readSegyTraceHeaderByteArray[file, traceNumber, traceByteCount]";
 
 
-readSegyTraceHeader =
-LibraryFunctionLoad[$library, "readSegyTraceHeader", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
+readSegyTraceHeaderByteArray =
+LibraryFunctionLoad[$library, "readSegyTraceHeaderByteArray", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
 
 
 getSegyTraceHeaders::usage =

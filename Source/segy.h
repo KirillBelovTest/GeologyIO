@@ -16,9 +16,9 @@
 
 #include "common.h"
 
-DLLEXPORT int readSegyTextHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
+DLLEXPORT int readSegyTextHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
-DLLEXPORT int readSegyBinaryHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
+DLLEXPORT int readSegyBinaryHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
 DLLEXPORT int readSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 

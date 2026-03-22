@@ -1,268 +1,93 @@
-<|"Notebook" -> <|"Controller" -> "9f834f94-e434-4560-8645-729e7e2a6cf9", 
+<|"Notebook" -> <|"Controller" -> "9fb607e5-bf1c-4292-8fbf-735a8fdca218", 
    "FocusedCell" -> CoffeeLiqueur`Notebook`Cells`CellObj[
-     CoffeeLiqueur`Notebook`Cells`CellObj`$345], "FocusedCellSelection" -> 
-    {26, 25}, "MessangerChannel" -> Messanger, 
-   "ModalsChannel" -> "2ff882a5-4be6-4ce2-ad72-0fb7f27e4adc", 
-   "Objects" -> <|"48a11377-458d-452e-890d-b53da0f8fe79" -> 
-      <|"Public" -> Hold[Graphics[{Thickness[0.038461538461538464], 
-           {FaceForm[{GrayLevel[0.93], Opacity[1]}], FilledCurve[
-             {{BezierCurve[{{25.499999999999996, 2.5}, {25.499999999999996, 
-                  1.3953100000000003}, {24.604699999999998, 
-                  0.49999999999999994}, {23.5, 0.49999999999999994}}, 
-                SplineDegree -> 3], Line[{{23.5, 0.49999999999999994}, 
-                 {2.5, 0.49999999999999994}}], BezierCurve[
-                {{2.5, 0.49999999999999994}, {1.3953100000000003, 
-                  0.49999999999999994}, {0.49999999999999994, 
-                  1.3953100000000003}, {0.49999999999999994, 2.5}}, 
-                SplineDegree -> 3], Line[{{0.49999999999999994, 2.5}, 
-                 {0.49999999999999994, 23.5}}], BezierCurve[
-                {{0.49999999999999994, 23.5}, {0.49999999999999994, 
-                  24.604699999999998}, {1.3953100000000003, 
-                  25.499999999999996}, {2.5, 25.499999999999996}}, 
-                SplineDegree -> 3], Line[{{2.5, 25.499999999999996}, 
-                 {23.5, 25.499999999999996}}], BezierCurve[
-                {{23.5, 25.499999999999996}, {24.604699999999998, 
-                  25.499999999999996}, {25.499999999999996, 
-                  24.604699999999998}, {25.499999999999996, 23.5}}, 
-                SplineDegree -> 3], Line[{{25.499999999999996, 23.5}, 
-                 {25.499999999999996, 2.5}}]}}]}, 
-           {FaceForm[{RGBColor[0.5, 0.5, 0.5], Opacity[1]}], 
-            FilledCurve[{{Line[{{20.5426, 19.116799999999998}, {16.3832, 
-                  21.876199999999997}}], Line[{{16.3832, 21.876199999999997}, 
-                 {16.3832, 20.021499999999996}}], Line[{{16.3832, 
-                  20.021499999999996}, {6.930469999999999, 
-                  20.021499999999996}}], Line[{{6.930469999999999, 
-                  20.021499999999996}, {6.930469999999999, 
-                  18.212100000000003}}], Line[{{6.930469999999999, 
-                  18.212100000000003}, {16.3832, 18.212100000000003}}], Line[
-                {{16.3832, 18.212100000000003}, {16.3832, 
-                  16.357399999999995}}], Line[{{16.3832, 16.357399999999995}, 
-                 {20.5426, 19.116799999999998}}]}}], FilledCurve[
-             {{Line[{{5.30508, 13.8391}, {9.46445, 11.079700000000003}}], 
-               Line[{{9.46445, 11.079700000000003}, {9.46445, 
-                  12.933999999999997}}], Line[{{9.46445, 12.933999999999997}, 
-                 {18.917199999999998, 12.933999999999997}}], Line[
-                {{18.917199999999998, 12.933999999999997}, 
-                 {18.917199999999998, 14.7438}}], Line[{{18.917199999999998, 
-                  14.7438}, {9.46445, 14.7438}}], Line[{{9.46445, 14.7438}, 
-                 {9.46445, 16.598}}], Line[{{9.46445, 16.598}, {5.30508, 
-                  13.8391}}]}}], FilledCurve[{{BezierCurve[
-                {{11.240100000000002, 6.280153749999999}, 
-                 {11.240100000000002, 5.641638124999999}, 
-                 {11.399943750000002, 5.1354662499999995}, {11.723928125, 
-                  4.77281}}, SplineDegree -> 3], BezierCurve[
-                {{11.723928125, 4.77281}, {12.042756250000002, 
-                  4.404138124999999}, {12.488771875000001, 
-                  4.222809999999999}, {13.04994375, 4.222809999999999}}, 
-                SplineDegree -> 3], BezierCurve[{{13.04994375, 
-                  4.222809999999999}, {13.506271875000001, 
-                  4.222809999999999}, {13.874943750000002, 
-                  4.360309999999999}, {14.166271875000001, 4.63015375}}, 
-                SplineDegree -> 3], BezierCurve[{{14.166271875000001, 
-                  4.63015375}, {14.457600000000001, 4.8991381249999995}, 
-                 {14.638928125000001, 5.251481875}, {14.71025625, 
-                  5.6803099999999995}}, SplineDegree -> 3], Line[
-                {{14.71025625, 5.6803099999999995}, {13.891271875000001, 
-                  5.6803099999999995}}], BezierCurve[{{13.891271875000001, 
-                  5.6803099999999995}, {13.836271875000001, 
-                  5.476638124999999}, {13.770100000000001, 5.32281}, 
-                 {13.687600000000002, 5.223981875}}, SplineDegree -> 3], 
-               BezierCurve[{{13.687600000000002, 5.223981875}, 
-                 {13.538928125000002, 5.031481874999999}, 
-                 {13.324943750000001, 4.937809999999999}, 
-                 {13.038771875000002, 4.937809999999999}}, SplineDegree -> 
-                 3], BezierCurve[{{13.038771875000002, 4.937809999999999}, 
-                 {12.763771875000002, 4.937809999999999}, 
-                 {12.532600000000002, 5.047809999999999}, {12.356428125, 
-                  5.267809999999999}}, SplineDegree -> 3], BezierCurve[
-                {{12.356428125, 5.267809999999999}, {12.1751, 5.48781}, 
-                 {12.087443750000002, 5.8229662499999995}, 
-                 {12.087443750000002, 6.268981875}}, SplineDegree -> 3], 
-               BezierCurve[{{12.087443750000002, 6.268981875}, 
-                 {12.087443750000002, 6.708981874999999}, 
-                 {12.169943750000002, 7.0553099999999995}, 
-                 {12.340100000000001, 7.297653749999999}}, SplineDegree -> 
-                 3], BezierCurve[{{12.340100000000001, 7.297653749999999}, 
-                 {12.510256250000001, 7.539138124999999}, 
-                 {12.747443750000002, 7.660309999999999}, 
-                 {13.038771875000002, 7.660309999999999}}, SplineDegree -> 
-                 3], BezierCurve[{{13.038771875000002, 7.660309999999999}, 
-                 {13.330100000000002, 7.660309999999999}, 
-                 {13.544943750000002, 7.572653749999999}, 
-                 {13.692756250000002, 7.401638125}}, SplineDegree -> 3], 
-               BezierCurve[{{13.692756250000002, 7.401638125}, 
-                 {13.775256250000002, 7.30796625}, {13.841428125, 7.16531}, 
-                 {13.896428125000002, 6.972809999999999}}, SplineDegree -> 
-                 3], Line[{{13.896428125000002, 6.972809999999999}, 
-                 {14.716271875, 6.972809999999999}}], BezierCurve[
-                {{14.716271875, 6.972809999999999}, {14.705100000000002, 
-                  7.22031}, {14.611428125000002, 7.46781}, {14.446428125, 
-                  7.71015375}}, SplineDegree -> 3], BezierCurve[
-                {{14.446428125, 7.71015375}, {14.143928125000002, 
-                  8.144138125}, {13.660100000000002, 8.364138125}, 
-                 {13.005256250000002, 8.364138125}}, SplineDegree -> 3], 
-               BezierCurve[{{13.005256250000002, 8.364138125}, 
-                 {12.510256250000001, 8.364138125}, {12.108928125000002, 
-                  8.199138125}, {11.7901, 7.875153749999999}}, 
-                SplineDegree -> 3], BezierCurve[{{11.7901, 
-                  7.875153749999999}, {11.421428125000002, 
-                  7.500466249999999}, {11.240100000000002, 
-                  6.967653749999999}, {11.240100000000002, 
-                  6.280153749999999}}, SplineDegree -> 3]}}]}}, 
-          Background -> GrayLevel[0.93], Axes -> False, AspectRatio -> 1, 
-          ImageSize -> Dynamic[{Automatic, 3.5*(CurrentValue["FontCapHeight"]/
-               AbsoluteCurrentValue[Magnification])}], Frame -> True, 
-          FrameTicks -> None, FrameStyle -> Directive[Thickness[Tiny], 
-            GrayLevel[0.7]]]]|>|>, 
-   "Path" -> "/Users/daria/Projects/GeologyIO/SEGY.wln", 
+     CoffeeLiqueur`Notebook`Cells`CellObj`$350], "FocusedCellSelection" -> 
+    {14, 13}, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "46f54c2c-acfb-451b-90c6-e513e1424e17", 
+   "Objects" -> <||>, "Path" -> "/Users/daria/Projects/GeologyIO/SEGY.wln", 
    "PublicFields" -> {"Properties"}, "Symbols" -> <||>, "TOC" -> {}, 
-   "TrashedCells" -> {"Dire"}|>, 
+   "TrashedCells" -> {"WLJS`GeologyIO`SEGY`Private`$streams", "Dire"}|>, 
  "Cells" -> {<|"Data" -> "PacletDirectoryLoad[FileNameJoin[{$HomeDirectory, \
 \"Projects\", \"GeologyIO\"}]];", "Display" -> "codemirror", 
-    "Hash" -> "d1568159-c86e-4cb2-90ea-f8dcc3e927d6", "Invisible" -> False, 
+    "Hash" -> "36b04ba6-7a43-493e-bcd4-b75523a6a20a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "Get[\"WLJS`GeologyIO`\"]", "Display" -> "codemirror", 
-    "Hash" -> "4f516e7b-95e9-49fd-b89f-bec8fe0925f3", "Invisible" -> False, 
+    "Hash" -> "1cbb92b1-73a4-4846-8e55-177505a63afa", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "path = AbsoluteFileName[FileNameJoin[{\"ExampleData\", \
 \"Marmousi.segy\"}]];", "Display" -> "codemirror", 
-    "Hash" -> "a40637a9-3d89-444b-b1b8-e2672825fd99", "Invisible" -> False, 
+    "Hash" -> "d4a01203-56b8-441c-a191-c6c568f2a182", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "segyFile = SEGYOpen[path]", "Display" -> "codemirror", 
-    "Hash" -> "8e82c154-0f5e-40af-aa73-dabd2468a04e", "Invisible" -> False, 
+    "Hash" -> "4f522111-5f96-4a66-b4c0-d8bc52a80098", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "SEGYFile[<|\"Path\"->\"/Users/daria/Projects/GeologyIO/Exampl\
-eData/Marmousi.segy\",\"Stream\"->WLJS`GeologyIO`SEGY`Private`stream$270477,\
-\"FileSize\"->432720,\"TraceSize\"->240+Missing[\"KeyAbsent\",LibraryFunction\
-[(*VB[*) \
-\"/Users/daria/Projects/GeologyIO/LibraryResources/MacOSX-ARM64-v8/geologyio.\
-dylib\", \"readByteArray\", {Integer, {Integer, 1}, {Integer, 1}, Integer}, \
-ByteArray \
-(*,*)(*\"1:eJydkM1Lw0AQxeMXqBdFD4KnCHoMtGlKUm8tpigUhER7dpOdlIX9gMkuNv+9s13B3h\
-Qvj31vZoffzF1jqu4oiqL+lmRhtkuD6mOOyPQGeO2UYjhQ3B34nguSJRptS83XAq1jMhSu9grlFlp\
-nWSOhvqc4K9h4PMnzJJsWnCSFpJiNeNJMJ5yNuqKDfNYd+iHHJCvR2+Bu9ni+OV4sqLWAz3rH4XRr\
-hdGxZgoe4/DpnKTkwhr0fYHNj302kgd3RvJerZ6gNRzqa3IPaYrA+GKw4PceyP/wVI7WOPUPannVc\
-tilb+jgd8pLqs1x4xRoG7fGaftfTB9lf4HqT/xlmOzhC0S+eG8=\"*)(*]VB*)][WLJS`GeologyI\
-O`SEGY`Private`stream$270477,{3224},{2},1]] LibraryFunction[(*VB[*) \
-\"/Users/daria/Projects/GeologyIO/LibraryResources/MacOSX-ARM64-v8/geologyio.\
-dylib\", \"readByteArray\", {Integer, {Integer, 1}, {Integer, 1}, Integer}, \
-ByteArray \
-(*,*)(*\"1:eJydkM1Lw0AQxeMXqBdFD4KnCHoMtGlKUm8tpigUhER7dpOdlIX9gMkuNv+9s13B3h\
-Qvj31vZoffzF1jqu4oiqL+lmRhtkuD6mOOyPQGeO2UYjhQ3B34nguSJRptS83XAq1jMhSu9grlFlp\
-nWSOhvqc4K9h4PMnzJJsWnCSFpJiNeNJMJ5yNuqKDfNYd+iHHJCvR2+Bu9ni+OV4sqLWAz3rH4XRr\
-hdGxZgoe4/DpnKTkwhr0fYHNj302kgd3RvJerZ6gNRzqa3IPaYrA+GKw4PceyP/wVI7WOPUPannVc\
-tilb+jgd8pLqs1x4xRoG7fGaftfTB9lf4HqT/xlmOzhC0S+eG8=\"*)(*]VB*)][WLJS`GeologyI\
-O`SEGY`Private`stream$270477,{3220},{2},1],\"NumberDataTraces\"->(*FB[*)((429\
-120)(*,*)/(*,*)(240+Missing[\"KeyAbsent\",LibraryFunction[(*VB[*) \
-\"/Users/daria/Projects/GeologyIO/LibraryResources/MacOSX-ARM64-v8/geologyio.\
-dylib\", \"readByteArray\", {Integer, {Integer, 1}, {Integer, 1}, Integer}, \
-ByteArray \
-(*,*)(*\"1:eJydkM1Lw0AQxeMXqBdFD4KnCHoMtGlKUm8tpigUhER7dpOdlIX9gMkuNv+9s13B3h\
-Qvj31vZoffzF1jqu4oiqL+lmRhtkuD6mOOyPQGeO2UYjhQ3B34nguSJRptS83XAq1jMhSu9grlFlp\
-nWSOhvqc4K9h4PMnzJJsWnCSFpJiNeNJMJ5yNuqKDfNYd+iHHJCvR2+Bu9ni+OV4sqLWAz3rH4XRr\
-hdGxZgoe4/DpnKTkwhr0fYHNj302kgd3RvJerZ6gNRzqa3IPaYrA+GKw4PceyP/wVI7WOPUPannVc\
-tilb+jgd8pLqs1x4xRoG7fGaftfTB9lf4HqT/xlmOzhC0S+eG8=\"*)(*]VB*)][WLJS`GeologyI\
-O`SEGY`Private`stream$270477,{3224},{2},1]] LibraryFunction[(*VB[*) \
-\"/Users/daria/Projects/GeologyIO/LibraryResources/MacOSX-ARM64-v8/geologyio.\
-dylib\", \"readByteArray\", {Integer, {Integer, 1}, {Integer, 1}, Integer}, \
-ByteArray \
-(*,*)(*\"1:eJydkM1Lw0AQxeMXqBdFD4KnCHoMtGlKUm8tpigUhER7dpOdlIX9gMkuNv+9s13B3h\
-Qvj31vZoffzF1jqu4oiqL+lmRhtkuD6mOOyPQGeO2UYjhQ3B34nguSJRptS83XAq1jMhSu9grlFlp\
-nWSOhvqc4K9h4PMnzJJsWnCSFpJiNeNJMJ5yNuqKDfNYd+iHHJCvR2+Bu9ni+OV4sqLWAz3rH4XRr\
-hdGxZgoe4/DpnKTkwhr0fYHNj302kgd3RvJerZ6gNRzqa3IPaYrA+GKw4PceyP/wVI7WOPUPannVc\
-tilb+jgd8pLqs1x4xRoG7fGaftfTB9lf4HqT/xlmOzhC0S+eG8=\"*)(*]VB*)][WLJS`GeologyI\
-O`SEGY`Private`stream$270477,{3220},{2},1]))(*]FB*),\"SamplesFormatCode\"->Li\
-braryFunction[(*VB[*) \
-\"/Users/daria/Projects/GeologyIO/LibraryResources/MacOSX-ARM64-v8/geologyio.\
-dylib\", \"readByteArray\", {Integer, {Integer, 1}, {Integer, 1}, Integer}, \
-ByteArray \
-(*,*)(*\"1:eJydkM1Lw0AQxeMXqBdFD4KnCHoMtGlKUm8tpigUhER7dpOdlIX9gMkuNv+9s13B3h\
-Qvj31vZoffzF1jqu4oiqL+lmRhtkuD6mOOyPQGeO2UYjhQ3B34nguSJRptS83XAq1jMhSu9grlFlp\
-nWSOhvqc4K9h4PMnzJJsWnCSFpJiNeNJMJ5yNuqKDfNYd+iHHJCvR2+Bu9ni+OV4sqLWAz3rH4XRr\
-hdGxZgoe4/DpnKTkwhr0fYHNj302kgd3RvJerZ6gNRzqa3IPaYrA+GKw4PceyP/wVI7WOPUPannVc\
-tilb+jgd8pLqs1x4xRoG7fGaftfTB9lf4HqT/xlmOzhC0S+eG8=\"*)(*]VB*)][WLJS`GeologyI\
-O`SEGY`Private`stream$270477,{3224},{2},1],\"NumberOfSamplesForReel\"->Librar\
-yFunction[(*VB[*) \
-\"/Users/daria/Projects/GeologyIO/LibraryResources/MacOSX-ARM64-v8/geologyio.\
-dylib\", \"readByteArray\", {Integer, {Integer, 1}, {Integer, 1}, Integer}, \
-ByteArray \
-(*,*)(*\"1:eJydkM1Lw0AQxeMXqBdFD4KnCHoMtGlKUm8tpigUhER7dpOdlIX9gMkuNv+9s13B3h\
-Qvj31vZoffzF1jqu4oiqL+lmRhtkuD6mOOyPQGeO2UYjhQ3B34nguSJRptS83XAq1jMhSu9grlFlp\
-nWSOhvqc4K9h4PMnzJJsWnCSFpJiNeNJMJ5yNuqKDfNYd+iHHJCvR2+Bu9ni+OV4sqLWAz3rH4XRr\
-hdGxZgoe4/DpnKTkwhr0fYHNj302kgd3RvJerZ6gNRzqa3IPaYrA+GKw4PceyP/wVI7WOPUPannVc\
-tilb+jgd8pLqs1x4xRoG7fGaftfTB9lf4HqT/xlmOzhC0S+eG8=\"*)(*]VB*)][WLJS`GeologyI\
-O`SEGY`Private`stream$270477,{3220},{2},1]|>]", "Display" -> "codemirror", 
-    "Hash" -> "d543d16d-9e4d-44e7-8fbc-105189d55d05", "Invisible" -> False, 
+eData/Marmousi.segy\",\"Stream\"->8551385296,\"FileSize\"->432720,\"TraceSize\
+\"->1440,\"NumberDataTraces\"->298,\"SamplesFormatCode\"->1,\"NumberOfSamples\
+ForReel\"->300|>]", "Display" -> "codemirror", 
+    "Hash" -> "856e0824-e065-49f9-9f79-236e26450e00", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
-   <|"Data" -> "WLJS`GeologyIO`SEGY`Private`$streams", 
-    "Display" -> "codemirror", "Hash" -> 
-     "d5ffb7bb-7728-4efe-aa87-3563e7ca39af", "Invisible" -> False, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
+   <|"Data" -> "segyFile[All]", "Display" -> "codemirror", 
+    "Hash" -> "82f427cf-8fa1-4310-a7de-bc9376f3b1af", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
-   <|"Data" -> "<||>", "Display" -> "codemirror", 
-    "Hash" -> "b0376ada-b6cb-48b3-8b8b-c666ec2ccaf6", "Invisible" -> False, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
+   <|"Data" -> "SEGYFile[All,{0,300}]", "Display" -> "codemirror", 
+    "Hash" -> "4d8470de-2bf9-4ab0-a042-9ee24dc34a01", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
-   <|"Data" -> "RepeatedTiming[segyFile[Range[298]]]", 
-    "Display" -> "codemirror", "Hash" -> 
-     "ca3cd57f-c6d4-453e-a774-ffbab0f59440", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "byteArray = WLJS`GeologyIO`IO`Private`readByteArray[stream, \
 {3220}, {2}, 1];\nImportByteArray[byteArray, \"UnsignedInteger16\", \
 ByteOrdering -> 1][[1]]", "Display" -> "codemirror", 
-    "Hash" -> "bf62d10e-a063-43ae-bd68-98fd0fd5e64e", "Invisible" -> False, 
+    "Hash" -> "eefc8247-7397-4742-806e-85f3db5f05db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "byteArray = WLJS`GeologyIO`IO`Private`readByteArray[stream, \
 {3224}, {2}, 1];\nImportByteArray[byteArray, \"UnsignedInteger16\", \
 ByteOrdering -> 1][[1]]", "Display" -> "codemirror", 
-    "Hash" -> "8ed84c5b-09ea-468b-9110-16ec7451bd33", "Invisible" -> False, 
+    "Hash" -> "9dc2f305-3635-4ff0-8c24-615a167ff357", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "Normal[byteArray]", "Display" -> "codemirror", 
-    "Hash" -> "d68363cb-e0f1-4db1-9d0b-83dfb9778be6", "Invisible" -> False, 
+    "Hash" -> "31566005-2271-4e07-9c85-d78ee9749863", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "segyFile = SEGYOpen[path];", "Display" -> "codemirror", 
-    "Hash" -> "920c4e4a-b1fe-494d-ac18-31c6d3cef3f1", "Invisible" -> False, 
+    "Hash" -> "618cc120-6faa-451f-bec7-9dc264444928", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> "AbsoluteTiming[segyData = SEGYImport[segyFile];]", 
     "Display" -> "codemirror", "Hash" -> 
-     "290850cd-86c5-49a2-a8cd-0e5aa51b2ffb", "Invisible" -> False, 
+     "a7abe6e0-1520-48b0-98c9-9482a465eaae", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> 
      "{min, max} = MinMax[Flatten[Normal[segyData[\"TraceData\"]]]];", 
     "Display" -> "codemirror", "Hash" -> 
-     "107766f3-c580-4d02-8259-152fa3a472f8", "Invisible" -> False, 
+     "8ca77cf5-46fb-424d-a412-961ed12d1797", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
    <|"Data" -> 
      "Image[Transpose[(max - Normal[segyData[\"TraceData\"]]) / (max - \
 min)]]", "Display" -> "codemirror", 
-    "Hash" -> "68927d65-3c97-4526-a177-151faead61fc", "Invisible" -> False, 
+    "Hash" -> "0d2f68a4-78ea-400f-adef-1dd2505b16fe", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "cf0831df-8e24-4ac3-9fda-36d76af8b26d"|>}, 
+    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>}, 
  "serializer" -> "jsfn4"|>

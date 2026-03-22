@@ -8,7 +8,7 @@
 #define SEGY_TRACE_HEADER_SIZE 240
 #define SEGY_TRACE_HEADER_LENGTH 80
 
-DLLEXPORT int readSegyTextHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
+DLLEXPORT int readSegyTextHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {
         return LIBRARY_FUNCTION_ERROR;
     }
@@ -41,7 +41,7 @@ DLLEXPORT int readSegyTextHeader(WolframLibraryData libData, mint Argc, MArgumen
     return LIBRARY_NO_ERROR;
 }
 
-DLLEXPORT int readSegyBinaryHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
+DLLEXPORT int readSegyBinaryHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {
         return LIBRARY_FUNCTION_ERROR;
     }
