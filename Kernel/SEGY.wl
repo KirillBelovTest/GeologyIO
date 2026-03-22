@@ -45,10 +45,11 @@ Module[{
     traceSize,
     numberDataTraces
 },
-    If[KeyExistsQ[$streams, path],
-        stream = $streams[path],
-        stream = WLJS`GeologyIO`IO`Private`openFile[path]
+    If[!KeyExistsQ[$streams, path],
+        $streams[path] = WLJS`GeologyIO`IO`Private`openFile[path]
     ];
+
+    $stream = $streams[path];
 
     fileSize = FileByteCount[path];
 
@@ -77,14 +78,26 @@ SEGYFile[assoc_Association][key_String] :=
 assoc[[key]];
 
 
-SEGYFile[assoc_Association][positions: {__Integer}] :=
+SEGYFile[assoc_Association][positions: {__Integer}, {from_Integer, to_Integer}] :=
 With[{
     stream = assoc["Stream"],
     traceSize = assoc["TraceSize"],
     numberOfSamplesForReel = assoc["NumberOfSamplesForReel"]
 },
-    getSegyTracesData[stream, positions, Length[positions], traceSize, 0, numberOfSamplesForReel]
+    getSegyTracesData[stream, positions, Length[positions], traceSize, from, to - from]
 ];
+
+
+(segyFile: SEGYFile)[assoc_Association][positions: {__Integer}] :=
+segyFile[positions, {0, assoc["NumberOfSamplesForReel"]}];
+
+
+(segyFile: SEGYFile)[assoc_Association][All, {from_, to_}] :=
+segyFile[Range[assoc["NumberDataTraces"]], {from, to}];
+
+
+(segyFile: SEGYFile)[assoc_Association][All] :=
+segyFile[All, {0, assoc["NumberOfSamplesForReel"]}];
 
 
 SEGYImport[segyFile_SEGYFile] :=
