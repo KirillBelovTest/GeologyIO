@@ -1,93 +1,14 @@
-<|"Notebook" -> <|"Controller" -> "9fb607e5-bf1c-4292-8fbf-735a8fdca218", 
+<|"Notebook" -> <|"Controller" -> "9965073a-7e38-4a91-a323-6053cc915145", 
    "FocusedCell" -> CoffeeLiqueur`Notebook`Cells`CellObj[
-     CoffeeLiqueur`Notebook`Cells`CellObj`$350], "FocusedCellSelection" -> 
-    {14, 13}, "MessangerChannel" -> Messanger, 
-   "ModalsChannel" -> "46f54c2c-acfb-451b-90c6-e513e1424e17", 
-   "Objects" -> <||>, "Path" -> "/Users/daria/Projects/GeologyIO/SEGY.wln", 
+     CoffeeLiqueur`Notebook`Cells`CellObj`$383], "FocusedCellSelection" -> 
+    {1, 0}, "MessangerChannel" -> Messanger, "ModalsChannel" -> 
+    "fe3d7b96-331f-4e05-b3b9-8e073e0c59c4", "Objects" -> <||>, 
+   "Path" -> "C:\\Users\\Kirill\\Projects\\GeologyIO\\SEGY.wln", 
    "PublicFields" -> {"Properties"}, "Symbols" -> <||>, "TOC" -> {}, 
    "TrashedCells" -> {"WLJS`GeologyIO`SEGY`Private`$streams", "Dire"}|>, 
- "Cells" -> {<|"Data" -> "PacletDirectoryLoad[FileNameJoin[{$HomeDirectory, \
-\"Projects\", \"GeologyIO\"}]];", "Display" -> "codemirror", 
-    "Hash" -> "36b04ba6-7a43-493e-bcd4-b75523a6a20a", "Invisible" -> False, 
+ "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
+    "Hash" -> "fb21fdf8-76b3-4b07-bafc-d0804ba44d2a", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "Get[\"WLJS`GeologyIO`\"]", "Display" -> "codemirror", 
-    "Hash" -> "1cbb92b1-73a4-4846-8e55-177505a63afa", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "path = AbsoluteFileName[FileNameJoin[{\"ExampleData\", \
-\"Marmousi.segy\"}]];", "Display" -> "codemirror", 
-    "Hash" -> "d4a01203-56b8-441c-a191-c6c568f2a182", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "segyFile = SEGYOpen[path]", "Display" -> "codemirror", 
-    "Hash" -> "4f522111-5f96-4a66-b4c0-d8bc52a80098", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "SEGYFile[<|\"Path\"->\"/Users/daria/Projects/GeologyIO/Exampl\
-eData/Marmousi.segy\",\"Stream\"->8551385296,\"FileSize\"->432720,\"TraceSize\
-\"->1440,\"NumberDataTraces\"->298,\"SamplesFormatCode\"->1,\"NumberOfSamples\
-ForReel\"->300|>]", "Display" -> "codemirror", 
-    "Hash" -> "856e0824-e065-49f9-9f79-236e26450e00", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "segyFile[All]", "Display" -> "codemirror", 
-    "Hash" -> "82f427cf-8fa1-4310-a7de-bc9376f3b1af", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "SEGYFile[All,{0,300}]", "Display" -> "codemirror", 
-    "Hash" -> "4d8470de-2bf9-4ab0-a042-9ee24dc34a01", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Output", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "byteArray = WLJS`GeologyIO`IO`Private`readByteArray[stream, \
-{3220}, {2}, 1];\nImportByteArray[byteArray, \"UnsignedInteger16\", \
-ByteOrdering -> 1][[1]]", "Display" -> "codemirror", 
-    "Hash" -> "eefc8247-7397-4742-806e-85f3db5f05db", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "byteArray = WLJS`GeologyIO`IO`Private`readByteArray[stream, \
-{3224}, {2}, 1];\nImportByteArray[byteArray, \"UnsignedInteger16\", \
-ByteOrdering -> 1][[1]]", "Display" -> "codemirror", 
-    "Hash" -> "9dc2f305-3635-4ff0-8c24-615a167ff357", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "Normal[byteArray]", "Display" -> "codemirror", 
-    "Hash" -> "31566005-2271-4e07-9c85-d78ee9749863", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "segyFile = SEGYOpen[path];", "Display" -> "codemirror", 
-    "Hash" -> "618cc120-6faa-451f-bec7-9dc264444928", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> "AbsoluteTiming[segyData = SEGYImport[segyFile];]", 
-    "Display" -> "codemirror", "Hash" -> 
-     "a7abe6e0-1520-48b0-98c9-9482a465eaae", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> 
-     "{min, max} = MinMax[Flatten[Normal[segyData[\"TraceData\"]]]];", 
-    "Display" -> "codemirror", "Hash" -> 
-     "8ca77cf5-46fb-424d-a412-961ed12d1797", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>, 
-   <|"Data" -> 
-     "Image[Transpose[(max - Normal[segyData[\"TraceData\"]]) / (max - \
-min)]]", "Display" -> "codemirror", 
-    "Hash" -> "0d2f68a4-78ea-400f-adef-1dd2505b16fe", "Invisible" -> False, 
-    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
-    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "db8d1562-1dee-4151-960f-82f6ac44024e"|>}, 
+    "Notebook" -> "4a8b5473-9078-4a5d-8d1e-c64928762c19"|>}, 
  "serializer" -> "jsfn4"|>
