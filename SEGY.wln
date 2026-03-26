@@ -1,14 +1,21 @@
-<|"Notebook" -> <|"Controller" -> "9965073a-7e38-4a91-a323-6053cc915145", 
+<|"Notebook" -> <|"Controller" -> "d697db4c-6b96-4026-a021-6c827b6ceff6", 
    "FocusedCell" -> CoffeeLiqueur`Notebook`Cells`CellObj[
-     CoffeeLiqueur`Notebook`Cells`CellObj`$383], "FocusedCellSelection" -> 
-    {1, 0}, "MessangerChannel" -> Messanger, "ModalsChannel" -> 
-    "fe3d7b96-331f-4e05-b3b9-8e073e0c59c4", "Objects" -> <||>, 
-   "Path" -> "C:\\Users\\Kirill\\Projects\\GeologyIO\\SEGY.wln", 
+     CoffeeLiqueur`Notebook`Cells`CellObj`$373], "FocusedCellSelection" -> 
+    {24, 23}, "MessangerChannel" -> Messanger, 
+   "ModalsChannel" -> "fb88e86e-e570-44e9-b6f2-bff7feff3896", 
+   "Objects" -> <||>, "Path" -> 
+    "C:\\Users\\Kirill\\Projects\\GeologyIO\\SEGY.wln", 
    "PublicFields" -> {"Properties"}, "Symbols" -> <||>, "TOC" -> {}, 
    "TrashedCells" -> {"WLJS`GeologyIO`SEGY`Private`$streams", "Dire"}|>, 
- "Cells" -> {<|"Data" -> "", "Display" -> "codemirror", 
-    "Hash" -> "fb21fdf8-76b3-4b07-bafc-d0804ba44d2a", "Invisible" -> False, 
+ "Cells" -> {<|"Data" -> "PacletDirectoryLoad[FileNameJoin[{$HomeDirectory, \
+\"Projects\", \"GeologyIO\"}]];", "Display" -> "codemirror", 
+    "Hash" -> "028cf6d4-417b-4d8f-a208-6a77ccd707db", "Invisible" -> False, 
     "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
     "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
-    "Notebook" -> "4a8b5473-9078-4a5d-8d1e-c64928762c19"|>}, 
+    "Notebook" -> "104a9d3a-cd7a-4b4b-b7a2-2c927f132a8b"|>, 
+   <|"Data" -> "Get[\"WLJS`GeologyIO`\"];", "Display" -> "codemirror", 
+    "Hash" -> "a6316da8-3a2b-4f64-a878-8c7b1bc82714", "Invisible" -> False, 
+    "MetaOnly" -> False, "Props" -> <||>, "PublicFields" -> {"Properties"}, 
+    "State" -> "Idle", "Type" -> "Input", "UID" -> Null, 
+    "Notebook" -> "104a9d3a-cd7a-4b4b-b7a2-2c927f132a8b"|>}, 
  "serializer" -> "jsfn4"|>
