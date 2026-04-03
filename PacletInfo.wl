@@ -19,6 +19,7 @@ PacletObject[
         "Root" -> "Kernel",
         "Context" -> {
           {"WLJS`GeologyIO`", "GeologyIO.wl"},
+          {"WLJS`GeologyIO`Library`", "Library.wl"},
           {"WLJS`GeologyIO`SEGY`", "SEGY.wl"},
           {"WLJS`GeologyIO`EBCDIC`", "EBCDIC.wl"},
           {"WLJS`GeologyIO`Numbers`", "Numbers.wl"},

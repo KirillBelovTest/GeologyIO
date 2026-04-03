@@ -1,6 +1,7 @@
 (* :Package: *)
 
 BeginPackage["WLJS`GeologyIO`SEGY`", {
+    "WLJS`GeologyIO`Library`",
     "WLJS`GeologyIO`Numbers`",
     "WLJS`GeologyIO`EBCDIC`",
     "WLJS`GeologyIO`IO`",
@@ -177,49 +178,12 @@ getTraceData[byteArray_ByteArray, 1] :=
 IBM32ByteArrayToReal[byteArray];
 
 
-$directory =
-DirectoryName[$InputFileName, 2];
-
-
-$libraryLinkVersion =
-Which[
-    $VersionNumber >= 14.1,
-        LibraryVersionInformation[FindLibrary["demo"]]["WolframLibraryVersion"],
-    $VersionNumber >= 13.1,
-        7,
-    $VersionNumber >= 12.1,
-        6,
-    $VersionNumber >= 12.0,
-        5,
-    $VersionNumber >= 11.2,
-        4,
-    $VersionNumber >= 10.0,
-        3,
-    $VersionNumber >= 9.0,
-        2,
-    True,
-        1
-];
-
-
-$libraryDirectory =
-FileNameJoin[{
-    $directory,
-    "LibraryResources",
-    $SystemID <> "-v" <> ToString[$libraryLinkVersion]
-}];
-
-
-$library =
-Block[{$LibraryPath = $libraryDirectory}, FindLibrary["geologyio"]];
-
-
 readSegyTextHeaderByteArray::usage =
 "readSegyTextHeaderByteArray[file]";
 
 
 readSegyTextHeaderByteArray =
-LibraryFunctionLoad[$library, "readSegyTextHeaderByteArray", {Integer}, LibraryDataType[ByteArray]];
+LibraryFunctionLoad[$GeologyIOLibrary, "readSegyTextHeaderByteArray", {Integer}, LibraryDataType[ByteArray]];
 
 
 readSegyBinaryHeaderByteArray::usage =
@@ -227,7 +191,7 @@ readSegyBinaryHeaderByteArray::usage =
 
 
 readSegyBinaryHeaderByteArray =
-LibraryFunctionLoad[$library, "readSegyBinaryHeaderByteArray", {Integer}, LibraryDataType[ByteArray]];
+LibraryFunctionLoad[$GeologyIOLibrary, "readSegyBinaryHeaderByteArray", {Integer}, LibraryDataType[ByteArray]];
 
 
 readSegyTraceHeaderByteArray::usage =
@@ -235,7 +199,7 @@ readSegyTraceHeaderByteArray::usage =
 
 
 readSegyTraceHeaderByteArray =
-LibraryFunctionLoad[$library, "readSegyTraceHeaderByteArray", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
+LibraryFunctionLoad[$GeologyIOLibrary, "readSegyTraceHeaderByteArray", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
 
 
 getSegyTraceHeaders::usage =
@@ -243,7 +207,7 @@ getSegyTraceHeaders::usage =
 
 
 getSegyTraceHeaders =
-LibraryFunctionLoad[$library, "getSegyTraceHeaders", {Integer, {_Integer, 1}, Integer, Integer}, {Integer, 2}];
+LibraryFunctionLoad[$GeologyIOLibrary, "getSegyTraceHeaders", {Integer, {_Integer, 1}, Integer, Integer}, {Integer, 2}];
 
 
 readSegyTraceData::usage =
@@ -251,7 +215,7 @@ readSegyTraceData::usage =
 
 
 readSegyTraceData =
-LibraryFunctionLoad[$library, "readSegyTraceData", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
+LibraryFunctionLoad[$GeologyIOLibrary, "readSegyTraceData", {Integer, Integer, Integer}, LibraryDataType[ByteArray]];
 
 
 getSegyTracesData::usage =
@@ -259,7 +223,7 @@ getSegyTracesData::usage =
 
 
 getSegyTracesData =
-LibraryFunctionLoad[$library, "getSegyTracesData", {Integer, {_Integer, 1}, Integer, Integer, Integer, Integer}, LibraryDataType[NumericArray, "Real64", 2]];
+LibraryFunctionLoad[$GeologyIOLibrary, "getSegyTracesData", {Integer, {_Integer, 1}, Integer, Integer, Integer, Integer}, LibraryDataType[NumericArray, "Real64", 2]];
 
 
 byteArrayToSegyBinaryHeader::usage =
@@ -267,7 +231,7 @@ byteArrayToSegyBinaryHeader::usage =
 
 
 byteArrayToSegyBinaryHeader =
-LibraryFunctionLoad[$library, "byteArrayToSegyBinaryHeader", {{LibraryDataType[ByteArray], "Shared"}}, {Integer, 1}];
+LibraryFunctionLoad[$GeologyIOLibrary, "byteArrayToSegyBinaryHeader", {{LibraryDataType[ByteArray], "Shared"}}, {Integer, 1}];
 
 
 byteArrayToSegyTraceHeader::usage =
@@ -275,7 +239,7 @@ byteArrayToSegyTraceHeader::usage =
 
 
 byteArrayToSegyTraceHeader =
-LibraryFunctionLoad[$library, "byteArrayToSegyTraceHeader", {{LibraryDataType[ByteArray], "Shared"}}, {Integer, 1}];
+LibraryFunctionLoad[$GeologyIOLibrary, "byteArrayToSegyTraceHeader", {{LibraryDataType[ByteArray], "Shared"}}, {Integer, 1}];
 
 
 End[(*`Private`*)];

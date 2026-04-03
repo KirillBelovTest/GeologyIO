@@ -1,6 +1,7 @@
 (* :Package: *)
 
 BeginPackage["WLJS`GeologyIO`IO`", {
+    "WLJS`GeologyIO`Library`",
     "CCompilerDriver`",
     "LibraryLink`"
 }];
@@ -9,49 +10,12 @@ BeginPackage["WLJS`GeologyIO`IO`", {
 Begin["`Private`"];
 
 
-$directory =
-DirectoryName[$InputFileName, 2];
-
-
-$libraryLinkVersion =
-Which[
-    $VersionNumber >= 14.1,
-        LibraryVersionInformation[FindLibrary["demo"]]["WolframLibraryVersion"],
-    $VersionNumber >= 13.1,
-        7,
-    $VersionNumber >= 12.1,
-        6,
-    $VersionNumber >= 12.0,
-        5,
-    $VersionNumber >= 11.2,
-        4,
-    $VersionNumber >= 10.0,
-        3,
-    $VersionNumber >= 9.0,
-        2,
-    True,
-        1
-];
-
-
-$libraryDirectory =
-FileNameJoin[{
-    $directory,
-    "LibraryResources",
-    $SystemID <> "-v" <> ToString[$libraryLinkVersion]
-}];
-
-
-$library =
-Block[{$LibraryPath = $libraryDirectory}, FindLibrary["geologyio"]];
-
-
 openFile::usage =
 "openFile[path] returns file stream pointer.";
 
 
 openFile =
-LibraryFunctionLoad[$library, "openFile", {String}, Integer];
+LibraryFunctionLoad[$GeologyIOLibrary, "openFile", {String}, Integer];
 
 
 readByteArray::usage =
@@ -59,7 +23,7 @@ readByteArray::usage =
 
 
 readByteArray =
-LibraryFunctionLoad[$library, "readByteArray", {Integer, {Integer, 1}, {Integer, 1}, Integer}, LibraryDataType[ByteArray]];
+LibraryFunctionLoad[$GeologyIOLibrary, "readByteArray", {Integer, {Integer, 1}, {Integer, 1}, Integer}, LibraryDataType[ByteArray]];
 
 
 closeFile::usage =
@@ -67,7 +31,7 @@ closeFile::usage =
 
 
 closeFile =
-LibraryFunctionLoad[$library, "closeFile", {Integer}, Integer];
+LibraryFunctionLoad[$GeologyIOLibrary, "closeFile", {Integer}, "Void"];
 
 
 End[(*`Private`*)];

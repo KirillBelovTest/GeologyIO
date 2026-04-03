@@ -1,6 +1,7 @@
 (* ::Package:: *)
 
 BeginPackage["WLJS`GeologyIO`Numbers`", {
+    "WLJS`GeologyIO`Library`",
     "CCompilerDriver`",
     "LibraryLink`"
 }];
@@ -25,49 +26,12 @@ IBM32ByteArrayToReal[byteArray_ByteArray] :=
 ibm32ByteArrayToReal[byteArray, Length[byteArray]];
 
 
-$directory =
-DirectoryName[$InputFileName, 2];
-
-
-$libraryLinkVersion =
-Which[
-    $VersionNumber >= 14.1,
-        LibraryVersionInformation[FindLibrary["demo"]]["WolframLibraryVersion"],
-    $VersionNumber >= 13.1,
-        7,
-    $VersionNumber >= 12.1,
-        6,
-    $VersionNumber >= 12.0,
-        5,
-    $VersionNumber >= 11.2,
-        4,
-    $VersionNumber >= 10.0,
-        3,
-    $VersionNumber >= 9.0,
-        2,
-    True,
-        1
-];
-
-
-$libraryDirectory =
-FileNameJoin[{
-    $directory,
-    "LibraryResources",
-    $SystemID <> "-v" <> ToString[$libraryLinkVersion]
-}];
-
-
-$library =
-Block[{$LibraryPath = $libraryDirectory}, FindLibrary["geologyio"]];
-
-
 ibm32RealToByteArray =
-LibraryFunctionLoad[$library, "ibm32RealToByteArray", {{_Real, 1, "Shared"}, Integer}, LibraryDataType[ByteArray]];
+LibraryFunctionLoad[$GeologyIOLibrary, "ibm32RealToByteArray", {{_Real, 1, "Shared"}, Integer}, LibraryDataType[ByteArray]];
 
 
 ibm32ByteArrayToReal =
-LibraryFunctionLoad[$library, "ibm32ByteArrayToReal", {{LibraryDataType[ByteArray], "Shared"}, Integer}, {_Real, 1}];
+LibraryFunctionLoad[$GeologyIOLibrary, "ibm32ByteArrayToReal", {{LibraryDataType[ByteArray], "Shared"}, Integer}, {_Real, 1}];
 
 
 IBM32RealToByteArrayCompiled := IBM32RealToByteArrayCompiled =

@@ -63,7 +63,9 @@ DLLEXPORT int closeFile(WolframLibraryData libData, mint Argc, MArgument *Args, 
     if (file != NULL) {
         fclose(file);
     }
+    else {
+        return LIBRARY_FUNCTION_ERROR;
+    }
 
-    MArgument_setInteger(Res, 0);
     return LIBRARY_NO_ERROR;
 }
