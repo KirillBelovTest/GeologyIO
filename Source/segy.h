@@ -1,6 +1,9 @@
 #ifndef SEGY_H
 #define SEGY_H
 
+#define IBM_32_FLOAT_FORMAT_CODE 1
+#define IBM_32_FLOAT_SAMPLE_SIZE 4
+
 #ifdef _WIN32
     #define bswap_16(x) _byteswap_ushort(x)
     #define bswap_32(x) _byteswap_ulong(x)

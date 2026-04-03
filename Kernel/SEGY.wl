@@ -79,26 +79,47 @@ SEGYFile[assoc_Association][key_String] :=
 assoc[[key]];
 
 
-SEGYFile[assoc_Association][positions: {__Integer}, {from_Integer, to_Integer}] :=
+SEGYFile[assoc_Association]["TraceHeaders", traceNumbers: {__Integer}] :=
 With[{
     stream = assoc["Stream"],
+    tracesCount = Length[traceNumbers],
     traceSize = assoc["TraceSize"],
-    numberOfSamplesForReel = assoc["NumberOfSamplesForReel"]
+    formatCode = assoc["SamplesFormatCode"]
 },
-    getSegyTracesData[stream, positions, Length[positions], traceSize, from, to - from]
+    getSegyTraceHeaders[stream,
+        traceNumbers,
+        traceStartPositions,
+        tracesCount,
+        samplesCount,
+        traceSize,
+        formatCode
+    ]
 ];
 
 
-(segyFile: SEGYFile)[assoc_Association][positions: {__Integer}] :=
-segyFile[positions, {0, assoc["NumberOfSamplesForReel"]}];
+SEGYFile[assoc_Association]["TracesData",
+    traceNumbers: {__Integer},
+    traceStartPositions: {__Integer},
+    samplesCount_Integer] :=
+With[{
+    stream = assoc["Stream"],
+    tracesCount = Length[traceNumbers],
+    traceSize = assoc["TraceSize"],
+    formatCode = assoc["SamplesFormatCode"]
+},
+    getSegyTracesData[stream,
+        traceNumbers,
+        traceStartPositions,
+        tracesCount,
+        samplesCount,
+        traceSize,
+        formatCode
+    ]
+];
 
 
-(segyFile: SEGYFile)[assoc_Association][All, {from_, to_}] :=
-segyFile[Range[assoc["NumberDataTraces"]], {from, to}];
 
 
-(segyFile: SEGYFile)[assoc_Association][All] :=
-segyFile[All, {0, assoc["NumberOfSamplesForReel"]}];
 
 
 SEGYImport[segyFile_SEGYFile] :=
@@ -219,11 +240,11 @@ LibraryFunctionLoad[$GeologyIOLibrary, "readSegyTraceData", {Integer, Integer, I
 
 
 getSegyTracesData::usage =
-"getSegyTracesData[file, indexes, count, traceSize, fromSample, samplesCount]";
+"getSegyTracesData[file, traceNumbers, traceStartPositions, tracesCount, samplesCount, fullTraceSize, samplesFormatCode]";
 
 
 getSegyTracesData =
-LibraryFunctionLoad[$GeologyIOLibrary, "getSegyTracesData", {Integer, {_Integer, 1}, Integer, Integer, Integer, Integer}, LibraryDataType[NumericArray, "Real64", 2]];
+LibraryFunctionLoad[$GeologyIOLibrary, "getSegyTracesData", {Integer, {_Integer, 1}, {_Integer, 1}, Integer, Integer, Integer, Integer}, LibraryDataType[NumericArray, "Real64", 2]];
 
 
 byteArrayToSegyBinaryHeader::usage =
