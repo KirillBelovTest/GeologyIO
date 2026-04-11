@@ -54,18 +54,6 @@ void ibm_32_byte_array_to_double(uint8_t *inputBytes, double *outputNumbers, min
     }
 }
 
-DLLEXPORT mint WolframLibrary_getVersion() {
-    return WolframLibraryVersion;
-}
-
-DLLEXPORT int WolframLibrary_initialize(WolframLibraryData libData) {
-    return LIBRARY_NO_ERROR;
-}
-
-DLLEXPORT void WolframLibrary_uninitialize(WolframLibraryData libData) {
-    (void)libData;
-}
-
 DLLEXPORT int ibm32RealToByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 2) {
         return LIBRARY_FUNCTION_ERROR;

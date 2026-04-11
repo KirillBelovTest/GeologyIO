@@ -141,7 +141,7 @@ DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument
     mint sampleFormateCode = MArgument_getInteger(Args[6]);                               // 1 - IBM 32 float, etc..
 
     int sampleSize;
-    void *(*bytesToSamplesConverter)(uint8_t*, double*, mint*);
+    void *(*bytesToSamplesConverter)(uint8_t*, double*, mint);
     switch (sampleFormateCode)
     {
     case IBM_32_FLOAT_FORMAT_CODE:
@@ -151,7 +151,6 @@ DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument
 
     default:
         return LIBRARY_TYPE_ERROR;
-        break;
     }
 
     mint dims[2] = {tracesCount, samplesCount};
