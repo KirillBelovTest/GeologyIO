@@ -1,5 +1,6 @@
 #include "io.h"
 
+
 DLLEXPORT int openFile(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {
         return LIBRARY_FUNCTION_ERROR;
@@ -25,61 +26,77 @@ DLLEXPORT int openFile(WolframLibraryData libData, mint Argc, MArgument *Args, M
     return LIBRARY_NO_ERROR;
 }
 
+
 DLLEXPORT int readByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
+    if (Argc != 3) {
+        return LIBRARY_FUNCTION_ERROR;
+    }
+
     FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
 
     MTensor positions = MArgument_getMTensor(Args[1]);
-    mint *positionArray = libData->MTensor_getIntegerData(positions);
+    mint *positions_array = libData->MTensor_getIntegerData(positions);
+    mint positions_length = libData->MTensor_getFlattenedLength(positions);
 
-    MTensor counts = MArgument_getMTensor(Args[2]);
-    mint *countArray = libData->MTensor_getIntegerData(counts);
-
-    mint length = MArgument_getInteger(Args[3]);
-
-    mint dims[1] = {0};
-    for (mint i = 0; i < length; i++) {
-        dims[0] += countArray[i];
+    mint part_size = MArgument_getInteger(Args[2]);
+    if (part_size <= 0) {
+        return LIBRARY_DIMENSION_ERROR;
     }
 
-    MNumericArray byteArray;
-    libData->numericarrayLibraryFunctions->MNumericArray_new(MNumericArray_Type_UBit8, 1, dims, &byteArray);
-    uint8_t *data = libData->numericarrayLibraryFunctions->MNumericArray_getData(byteArray);
+    mint dims[1] = {part_size * positions_length};
 
-    mint pos = 0;
-    for (mint i = 0; i < length; i++) {
-        fseek(file, positionArray[i], SEEK_SET);
-        fread(&data[pos], countArray[i], 1, file);
-        pos += countArray[i];
+    MNumericArray byte_array;
+    libData->numericarrayLibraryFunctions->MNumericArray_new(MNumericArray_Type_UBit8, 1, dims, &byte_array);
+    uint8_t *data = libData->numericarrayLibraryFunctions->MNumericArray_getData(byte_array);
+
+    mint position = 0;
+    for (mint i = 0; i < positions_length; i++) {
+        fseek(file, positions_array[i], SEEK_SET);
+        fread(&data[position], part_size, 1, file);
+        position += part_size;
     }
 
-    MArgument_setMNumericArray(Res, byteArray);
+    MArgument_setMNumericArray(Res, byte_array);
     return LIBRARY_NO_ERROR;
 }
+
 
 DLLEXPORT int writeByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
-    FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
-
-    MNumericArray byteArray = MArgument_getMNumericArray(Args[1]);
-    uint8_t *data = libData->numericarrayLibraryFunctions->MNumericArray_getData(byteArray);
-
-    MTensor positions = MArgument_getMTensor(Args[2]);
-    mint *positionArray = libData->MTensor_getIntegerData(positions);
-
-    MTensor counts = MArgument_getMTensor(Args[3]);
-    mint *countArray = libData->MTensor_getIntegerData(counts);
-
-    mint length = MArgument_getInteger(Args[4]);
-
-    mint pos = 0;
-    for (mint i = 0; i < length; i++) {
-        fseek(file, positionArray[i], SEEK_SET);
-        fwrite(&data[pos], countArray[i], 1, file);
-        pos += countArray[i];
+    if (Argc != 4) {
+        return LIBRARY_FUNCTION_ERROR;
     }
 
-    libData->numericarrayLibraryFunctions->MNumericArray_disown(byteArray);
+    FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
+    if (!file) {
+        return LIBRARY_FUNCTION_ERROR;
+    }
+
+    MNumericArray byte_array = MArgument_getMNumericArray(Args[1]);
+    uint8_t *data = libData->numericarrayLibraryFunctions->MNumericArray_getData(byte_array);
+    mint byte_array_size = libData->numericarrayLibraryFunctions->MNumericArray_getFlattenedLength(byte_array);
+
+    MTensor positions = MArgument_getMTensor(Args[2]);
+    mint *positions_array = libData->MTensor_getIntegerData(positions);
+    mint positions_length = libData->MTensor_getFlattenedLength(positions);
+
+    mint part_size = MArgument_getInteger(Args[3]);
+    if (part_size <= 0 ||
+        positions_array[positions_length - 1] + part_size > byte_array_size) {
+        libData->numericarrayLibraryFunctions->MNumericArray_disown(byte_array);
+        return LIBRARY_DIMENSION_ERROR;
+    }
+
+    mint position = 0;
+    for (mint i = 0; i < positions_length; i++) {
+        fseek(file, positions_array[i], SEEK_SET);
+        fwrite(&data[position], part_size, 1, file);
+        position += part_size;
+    }
+
+    libData->numericarrayLibraryFunctions->MNumericArray_disown(byte_array);
     return LIBRARY_NO_ERROR;
 }
+
 
 DLLEXPORT int closeFile(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {

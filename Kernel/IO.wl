@@ -7,34 +7,41 @@ BeginPackage["WLJS`GeologyIO`IO`", {
 }];
 
 
-Begin["`Private`"];
-
-
 openFile::usage =
-"openFile[path] returns file stream pointer.";
+"openFile[\"path\"] returns file stream pointer.";
+
+
+readByteArray::usage =
+"readByteArray[file, {positions}, partSize] read and return byte array.";
+
+
+writeByteArray::usage =
+"writeByteArray[file, byteArray, {positions}, partSize] write byte array.";
+
+closeFile::usage =
+"closeFile[stream] close file stream.";
+
+
+Begin["`Private`"];
 
 
 openFile =
 LibraryFunctionLoad[$GeologyIOLibrary, "openFile", {String}, Integer];
 
 
-readByteArray::usage =
-"readByteArray[stream, positions, counts, length] returns byte array.";
-
-
 readByteArray =
-LibraryFunctionLoad[$GeologyIOLibrary, "readByteArray", {Integer, {Integer, 1}, {Integer, 1}, Integer}, LibraryDataType[ByteArray]];
+LibraryFunctionLoad[$GeologyIOLibrary, "readByteArray", {Integer, {Integer, 1}, Integer}, LibraryDataType[ByteArray]];
 
 
-closeFile::usage =
-"closeFile[stream] close file stream.";
+writeByteArray =
+LibraryFunctionLoad[$GeologyIOLibrary, "writeByteArray", {Integer, LibraryDataType[ByteArray], {Integer, 1}, Integer}, "Void"];
 
 
 closeFile =
 LibraryFunctionLoad[$GeologyIOLibrary, "closeFile", {Integer}, "Void"];
 
 
-End[(*`Private`*)];
+End[];
 
 
-EndPackage[(*KirillBelov`GeologyIO`SEGY`*)];
+EndPackage[];
