@@ -1,8 +1,10 @@
 #ifndef SEGY_H
 #define SEGY_H
 
+
 #define IBM_32_FLOAT_FORMAT_CODE 1
 #define IBM_32_FLOAT_SAMPLE_SIZE 4
+
 
 #ifdef _WIN32
     #define bswap_16(x) _byteswap_ushort(x)
@@ -17,27 +19,21 @@
     #include <byteswap.h>
 #endif
 
+
 #include "common.h"
 
-DLLEXPORT int readSegyTextHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
-
-DLLEXPORT int readSegyBinaryHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
-
-DLLEXPORT int readSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
-
-DLLEXPORT int readSegyTraceData(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
 DLLEXPORT int byteArrayToSegyBinaryHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
+
 DLLEXPORT int byteArrayToSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
-DLLEXPORT int getSegyTraceHeaders(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
-
-DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res);
 
 void segy_trace_header_byte_array_to_mint(uint8_t *input, mint *output);
 
+
 void segy_binary_header_byte_array_to_mint(uint8_t *byteArray, mint *data);
+
 
 #pragma pack(push, 1)
 typedef struct {
@@ -75,6 +71,7 @@ typedef struct {
     uint8_t  unassigned2[94];      // 3507-3600
 } SEGYBinaryHeader;
 #pragma pack(pop)
+
 
 #pragma pack(push, 1)
 typedef struct {
@@ -161,5 +158,6 @@ typedef struct {
     uint8_t rest[32]; // 209-240
 } SEGYTraceHeader;
 #pragma pack(pop)
+
 
 #endif
