@@ -1,6 +1,7 @@
 #include "io.h"
 
 
+//openFile["path"] -> file
 DLLEXPORT int openFile(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {
         return LIBRARY_FUNCTION_ERROR;
@@ -27,6 +28,7 @@ DLLEXPORT int openFile(WolframLibraryData libData, mint Argc, MArgument *Args, M
 }
 
 
+//readByteArray[file, {positions}, partSize] -> <byteArray>
 DLLEXPORT int readByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 3) {
         return LIBRARY_FUNCTION_ERROR;
@@ -61,6 +63,7 @@ DLLEXPORT int readByteArray(WolframLibraryData libData, mint Argc, MArgument *Ar
 }
 
 
+//writeByteArray[file, <byteArray>, {positions}, partSize]
 DLLEXPORT int writeByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 4) {
         return LIBRARY_FUNCTION_ERROR;
@@ -98,6 +101,7 @@ DLLEXPORT int writeByteArray(WolframLibraryData libData, mint Argc, MArgument *A
 }
 
 
+//closeFile[file]
 DLLEXPORT int closeFile(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {
         return LIBRARY_FUNCTION_ERROR;

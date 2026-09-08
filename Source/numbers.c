@@ -1,5 +1,6 @@
 #include "numbers.h"
 
+
 void ibm_32_double_to_byte_array(double *inputNumbers, uint8_t *outputBytes, mint count) {
     const double log16 = log(16.0);
 
@@ -33,6 +34,7 @@ void ibm_32_double_to_byte_array(double *inputNumbers, uint8_t *outputBytes, min
     }
 }
 
+
 void ibm_32_byte_array_to_double(uint8_t *inputBytes, double *outputNumbers, mint count) {
     for (mint i = 0; i < count; ++i) {
         size_t byteIndex = i * IBM_FLOAT_SIZE;
@@ -54,6 +56,12 @@ void ibm_32_byte_array_to_double(uint8_t *inputBytes, double *outputNumbers, min
     }
 }
 
+
+/**
+ * Exported Wolfram Library function to convert double array to IBM 32-bit float
+ * Expects: {numbersList, numbersLength}
+ * Returns: Byte array of IBM float values
+ */
 DLLEXPORT int ibm32RealToByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 2) {
         return LIBRARY_FUNCTION_ERROR;
@@ -103,6 +111,12 @@ DLLEXPORT int ibm32RealToByteArray(WolframLibraryData libData, mint Argc, MArgum
     return LIBRARY_NO_ERROR;
 }
 
+
+/**
+ * Exported Wolfram Library function to convert IBM 32-bit float to double array
+ * Expects: {bytesArray, bytesLength}
+ * Returns: Double array of converted values
+ */
 DLLEXPORT int ibm32ByteArrayToReal(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 2) {
         return LIBRARY_FUNCTION_ERROR;

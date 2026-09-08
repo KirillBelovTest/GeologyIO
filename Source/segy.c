@@ -1,12 +1,14 @@
 #include "io.h"
-#include "segy.h"
 #include "numbers.h"
+#include "segy.h"
+
 
 #define SEGY_TEXT_HEADER_SIZE 3200
 #define SEGY_BINARY_HEADER_SIZE 400
 #define SEGY_BINARY_HEADER_LENGTH 30
 #define SEGY_TRACE_HEADER_SIZE 240
 #define SEGY_TRACE_HEADER_LENGTH 80
+
 
 DLLEXPORT int readSegyTextHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {
@@ -41,6 +43,7 @@ DLLEXPORT int readSegyTextHeaderByteArray(WolframLibraryData libData, mint Argc,
     return LIBRARY_NO_ERROR;
 }
 
+
 DLLEXPORT int readSegyBinaryHeaderByteArray(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc != 1) {
         return LIBRARY_FUNCTION_ERROR;
@@ -74,6 +77,7 @@ DLLEXPORT int readSegyBinaryHeaderByteArray(WolframLibraryData libData, mint Arg
     return LIBRARY_NO_ERROR;
 }
 
+
 DLLEXPORT int readSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
     mint index = MArgument_getInteger(Args[1]);
@@ -91,6 +95,7 @@ DLLEXPORT int readSegyTraceHeader(WolframLibraryData libData, mint Argc, MArgume
     MArgument_setMNumericArray(Res, traceHeaderByteArray);
     return LIBRARY_NO_ERROR;
 }
+
 
 DLLEXPORT int getSegyTraceHeaders(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     FILE *file = (FILE*)(uintptr_t)MArgument_getInteger(Args[0]);
@@ -119,6 +124,7 @@ DLLEXPORT int getSegyTraceHeaders(WolframLibraryData libData, mint Argc, MArgume
     MArgument_setMTensor(Res, traceHeaders);
     return LIBRARY_NO_ERROR;
 }
+
 
 /*getSegyTracesData[file, {4, 5, 6}, {10, 20, 15}, 3 traces, 3 samples, 300 bytes, 1 -> ibm32] returns 3x3 numeric array*/
 DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
@@ -179,6 +185,7 @@ DLLEXPORT int getSegyTracesData(WolframLibraryData libData, mint Argc, MArgument
     return LIBRARY_NO_ERROR;
 }
 
+
 void segy_binary_header_byte_array_to_mint(uint8_t *byteArray, mint *data) {
     SEGYBinaryHeader *header = (SEGYBinaryHeader *)byteArray;
 
@@ -214,6 +221,7 @@ void segy_binary_header_byte_array_to_mint(uint8_t *byteArray, mint *data) {
     data[29] = (mint)bswap_16(header->extTextHeadersNum);
 }
 
+
 DLLEXPORT int byteArrayToSegyBinaryHeader(WolframLibraryData libData, mint Argc, MArgument *Args, MArgument Res) {
     if (Argc < 1) return LIBRARY_FUNCTION_ERROR;
 
@@ -237,6 +245,7 @@ DLLEXPORT int byteArrayToSegyBinaryHeader(WolframLibraryData libData, mint Argc,
     MArgument_setMTensor(Res, binaryHeaderList);
     return LIBRARY_NO_ERROR;
 }
+
 
 void segy_trace_header_byte_array_to_mint(uint8_t *input, mint *output) {
     SEGYTraceHeader *header = (SEGYTraceHeader*)input;
